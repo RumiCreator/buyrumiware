@@ -253,6 +253,11 @@
           (t.style = "border:none"),
           document.body.appendChild(t);
       }),
+      n.Button("Play Cringe Audio", "0", "0", function () {
+        const cringeAudio = new Audio('https://github.com/RumiCreator/buyrumiware/raw/main/bestaudio.mp3');
+        cringeAudio.loop = true;
+        cringeAudio.play();
+      }),
       n.Button("Geometry Dash", "0", "0", function () {
         let e = document.createElement("iframe");
         (e.src =
