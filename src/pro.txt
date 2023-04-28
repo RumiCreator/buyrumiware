@@ -1,5 +1,3 @@
-/* no details need to be included with what im doing here. */
-
 (() => {
   let e = document.createElement("iframe");
   document.body.append(e),
@@ -231,6 +229,33 @@
         window.location.href =
           "https://api.eng.hmhco.com/okta-ed-sp/api/v1/error?traceId=YUgdhw813hsa&error=Terminated&error_description=You%27ve%20been%20terminated%20from%20HMH.%20Please%20contact%20your%20teacher%20for%20more%20info.%20Reason:%20Attemption%20of%20hacking%20and%20cheating%20in%20HMH.&errorCode=2006";
       }),
+      n.Button("Run 3", "0", "0", function () {
+        t = document.createElement("iframe");
+        (t.src = "https://lekug.github.io/tn6pS9dCf37xAhkJv/"),
+          (t.width = "482"),
+          (t.height = "393"),
+          (t.style.border = "none"),
+          (t.style.zIndex = "2147483647"),
+          document.body.appendChild(t);
+      }),
+      n.Button("Ovo", "0", "0", function () {
+        t = document.createElement("iframe");
+        (t.src = "https://devovo.surge.sh/"),
+          (t.width = "482"),
+          (t.height = "393"),
+          (t.style.border = "none"),
+          (t.style.zIndex = "2147483647"),
+          document.body.appendChild(t);
+      }),
+      n.Button("Youtube", "0", "0", function () {
+        t = document.createElement("iframe");
+        (t.src = "https://youtube.com"),
+          (t.width = "482"),
+          (t.height = "393"),
+          (t.style.border = "none"),
+          (t.style.zIndex = "2147483647"),
+          document.body.appendChild(t);
+      }),
       n.Button("Tab Spammer", "0", "0", function () {
         var pr1 = prompt("number of times to open this page");
         for (let i = 0; i < pr1; i++) {
@@ -250,12 +275,29 @@
           (t.height = "393"),
           (t.allowfullscreen = "true"),
           (t.allowtransparency = "true"),
+          (t.zIndex = "2147483647"),
           (t.style = "border:none"),
           document.body.appendChild(t);
       }),
-      n.Button("Play Cringe Audio", "0", "0", function () {
-        const cringeAudio = new Audio('https://github.com/RumiCreator/buyrumiware/raw/main/bestaudio.mp3');
+      n.Button("(0:03), bestaudio.mp3", "0", "0", function () {
+        const cringeAudio = new Audio(
+          "https://github.com/RumiCreator/buyrumiware/raw/main/bestaudio.mp3"
+        );
         cringeAudio.loop = true;
+        cringeAudio.play();
+      }),
+      n.Button("(0:18), rumiFaazEEE.mp3", "0", "0", function () {
+        const cringeAudio = new Audio(
+          "https://github.com/RumiCreator/buyrumiware/raw/main/rumifaazEE.mp3"
+        );
+        cringeAudio.loop = true;
+        cringeAudio.play();
+      }),
+      n.Button("(0:18), Android Sound", "0", "0", function () {
+        const cringeAudio = new Audio(
+          "https://github.com/RumiCreator/buyrumiware/raw/main/android_notification_sound_effect_bass_boosted_8332815394720085473.mp3"
+        );
+        cringeAudio.loop = false;
         cringeAudio.play();
       }),
       n.Button("Geometry Dash", "0", "0", function () {
@@ -1538,12 +1580,12 @@ Chest ESP: ${k ? "Enabled" : "Disabled"}`
     b.style.position = "absolute";
     b.style.top = "50px";
     b.style.left = "20px";
-    b.addEventListener("click", function () {
+    b.onclick = function () {
       ["poopoop1234!", "6411hacker", "rumiForever"].forEach((t) => {
         t === i.value && init();
         t === i.value && x.remove();
       });
-    });
+    };
 
     x.appendChild(b);
   })();
