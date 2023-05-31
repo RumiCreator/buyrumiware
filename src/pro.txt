@@ -1,1 +1,1691 @@
-/* no details need to be included with what im doing here. */(() => {  let e = document.createElement("iframe");  document.body.append(e),    (window.alert = e.contentWindow.alert.bind(window)),    (window.prompt = e.contentWindow.prompt.bind(window)),    (window.confirm = e.contentWindow.confirm.bind(window)),    e.remove();})(),  (init = () => {    let e = document.createElement("script");    (e.src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js"),      document.body.appendChild(e);    let t = {        executeScript: function (e) {          let t = document.createElement("script");          (t.innerHTML = "function hi(){" + e + "}"),            document.body.appendChild(t),            setTimeout(() => {              setTimeout(() => {                t.remove();              }, 500);            }, 1e3);        },        new: function (e, t, o) {          let n;          console.log("window successfully loaded");          let a = document.createElement("div"),            s = document.createElement("div"),            r = document.createElement("div");          a.style.overflowY = "scroll";          var l = 0,            i = 0,            d = 0,            c = 0;          return (            (s.onmousedown = (e = window.event) => {              e.preventDefault(),                (d = e.clientX),                (c = e.clientY),                (document.onmouseup = () => {                  (document.onmouseup = null), (document.onmousemove = null);                }),                (document.onmousemove = (e) => {                  (e = e || window.event).preventDefault(),                    (l = d - e.clientX),                    (i = c - e.clientY),                    (d = e.clientX),                    (c = e.clientY),                    (s.style.top = s.offsetTop - i + "px"),                    (s.style.left = s.offsetLeft - l + "px");                });            }),            (s.className = "rwTop"),            (s.style.position = "fixed"),            (s.style.textAlign = "center"),            (s.style.fontSize = "10px"),            (s.style.boxShadow = "5px 5px 5px darkGrey"),            (s.style.top = t),            (s.style.left = o),            (s.style.height = "30px"),            (s.style.width = "150px"),            (s.style.borderRadius = "10px"),            (s.style.zIndex = 2147483647),            (s.style.backgroundColor = "#222"),            e.appendChild(s),            (r.className = "rwTop2"),            (r.style.position = "absolute"),            (r.style.top = "20px"),            (r.style.boxShadow = "5px 5px 5px darkGrey"),            (r.style.left = "0px"),            (r.style.height = "17px"),            (r.style.width = "150px"),            (r.style.borderRadius = "0px"),            (r.style.zIndex = 2147483647),            (r.style.backgroundColor = "#222"),            s.appendChild(r),            (a.className = "rwName"),            (a.style.position = "absolute"),            (a.style.top = "20px"),            (a.style.left = "0px"),            (a.style.height = "200px"),            (a.style.boxShadow = "5px 5px 5px darkGrey"),            (a.style.width = "150px"),            (s.style.transition =              "background-color 0.5s, filter 0.5s, display 0.5s"),            (a.style.borderRadius = "10px"),            (a.style.zIndex = 2147483647),            (a.style.backgroundColor = "#333"),            (s.style.filter = "blur(1px)"),            s.appendChild(a),            s.addEventListener("mouseover", () => {              s.style.filter = "blur(0px)";            }),            s.addEventListener("mouseout", () => {              s.style.filter = "blur(1px)";            }),            {              ToggleWindow: function (e) {                !0 == e                  ? (s.style.display = "block")                  : (s.style.display = "none");              },              Destroy: function () {                s.remove();              },              toggleKeyBinds: function (e) {                n = e;              },              Notify: function (e, t) {                let o = document.createElement("div"),                  n = document.createElement("h2"),                  a = document.createElement("p");                (n.style.position = "relative"),                  (n.style.color = "lightGrey"),                  (n.innerHTML = e),                  (n.style.left = "15px"),                  (a.style.position = "relative"),                  (a.style.left = "15px"),                  (a.style.color = "white"),                  (a.style.top = "-10px"),                  (a.innerHTML = t),                  (o.zIndex = 2147483647),                  (o.style.position = "fixed"),                  (o.style.top = "70%"),                  (o.style.left = "85%"),                  (o.style.height = "100px"),                  (o.style.width = "250px"),                  (o.style.borderRadius = "5px"),                  (o.style.backgroundColor = "#222"),                  document.body.appendChild(o),                  o.appendChild(n),                  o.appendChild(a),                  setTimeout(() => {                    o.remove();                  }, 5e3),                  o.addEventListener("click", () => {                    o.remove();                  });              },              Toggle: function (e, t, o, n) {                let s = document.createElement("button"),                  r = !1;                (s.innerHTML = %60<summary>${e}</summary>%60),                  (s.style.height = "30px"),                  (s.style.width = "150px"),                  (s.zIndex = 2147483647),                  (s.style.position = "relative"),                  (s.style.top = t + "px"),                  (s.style.left = o + "px"),                  (s.style.borderRadius = "0px"),                  (s.style.transition = "background-color 0.5s"),                  (s.style.borderRadius = "0px"),                  (s.style.backgroundColor = "#222"),                  (s.style.color = "white"),                  s.addEventListener("mouseover", (e) => {                    !0 != r && (s.style.backgroundColor = "#555");                  }),                  s.addEventListener("mouseout", (e) => {                    !0 != r && (s.style.backgroundColor = "#222");                  }),                  s.addEventListener("click", (e) => {                    !1 == r                      ? (setTimeout(() => {                          n(r);                        }, 100),                        (s.style.backgroundColor = "#1fd1bf"),                        (r = !0))                      : ((r = !1),                        setTimeout(() => {                          n(r);                        }, 100),                        (s.style.backgroundColor = "#222"));                  }),                  a.appendChild(s);              },              Button: function (e, t, o, n) {                let s = document.createElement("button");                (s.innerHTML = %60<summary>${e}</summary>%60),                  (s.style.height = "30px"),                  (s.style.width = "150px"),                  (s.zIndex = 2147483647),                  (s.style.position = "relative"),                  (s.style.top = t + "px"),                  (s.style.left = o + "px"),                  (s.style.transition = "background-color 0.5s"),                  (s.style.backgroundColor = "#222"),                  (s.style.color = "white"),                  s.addEventListener("mouseover", (e) => {                    s.style.backgroundColor = "#555";                  }),                  s.addEventListener("mouseout", (e) => {                    s.style.backgroundColor = "#222";                  }),                  s.addEventListener("click", (e) => {                    n();                  }),                  a.appendChild(s);              }            }          );        }      },      o = t.new(document.body, "20px", "20px"),      n = t.new(document.body, "20px", "200px"),      a = t.new(document.body, "20px", "380px"),      s = t.new(document.body, "20px", "560px");    o.ToggleWindow(!0),      n.ToggleWindow(!1),      a.ToggleWindow(!1),      s.ToggleWindow(!1),      o.Notify("Notification", "Thanks for using Rumi-Ware!"),      o.Toggle("Trolling", "0", "0", function (e) {        n.ToggleWindow(e);      }),      o.Toggle("Blooket", "0", "0", function (e) {        a.ToggleWindow(e);      }),      o.Toggle("Dino Game", "0", "0", function (e) {        s.ToggleWindow(e);      }),      o.Button("Ovo Invincibility", "0", "0", function () {        alert("ig kahmron gave you these hacks now STORM THROUGH OVO LEVELS!!");        let canvas = document.querySelector("#c2canvas");        canvas.c2runtime.groups_by_name.enemies = null;      }),      n.Button("HMH Banned", "0", "0", function () {        window.location.href =          "https://api.eng.hmhco.com/okta-ed-sp/api/v1/error?traceId=YUgdhw813hsa&error=Terminated&error_description=You%27ve been terminated from HMH. Please contact your teacher for more info. Reason: Attemption of hacking and cheating in HMH.&errorCode=2006";      }),      n.Button("Run 3", "0", "0", function () {        t = document.createElement("iframe");        (t.src = "https://lekug.github.io/tn6pS9dCf37xAhkJv/"),          (t.width = "482"),          (t.height = "393"),          (t.style.border = "none"),          (t.style.zIndex = "2147483647"),          document.body.appendChild(t);      }),      n.Button("Ovo", "0", "0", function () {        t = document.createElement("iframe");        (t.src =          "https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://427396048-642845057394716217.preview.editmysite.com/uploads/b/139890129-761103484729797659/files/ovo.xml"),          (t.width = "482"),          (t.height = "393"),          (t.style.border = "none"),          (t.style.zIndex = "2147483647"),          document.body.appendChild(t);      }),      n.Button("Snow Rider 3D", "0", "0", function () {        t = document.createElement("iframe");        (t.src =          "https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/fr6ks8ab/vi9syd1rm@f0981e94dcc7836acb298d369a6e65391b802904/d65uds32/SnowRider3D.xml"),          (t.width = "964"),          (t.height = "786"),          (t.style.border = "none"),          (t.style.zIndex = "2147483647"),          document.body.appendChild(t);      }),      n.Button("A Small World Cup", "0", "0", function () {        t = document.createElement("iframe");        (t.src =          "https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://279362704-648691600325733615.preview.editmysite.com/uploads/b/139890129-695123685186939346/files/aswc.xml"),          (t.width = "964"),          (t.height = "786"),          (t.style.border = "none"),          (t.style.zIndex = "2147483647"),          document.body.appendChild(t);      }),      n.Button("Retro Bowl", "0", "0", function () {        t = document.createElement("iframe");        (t.src =          "https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://274079163-174037128449362058.preview.editmysite.com/uploads/b/139890129-899796311729593176/files/rtbl.xml"),          (t.width = "964"),          (t.height = "786"),          (t.style.border = "none"),          (t.style.zIndex = "2147483647"),          document.body.appendChild(t);      }),      n.Button("Pool: 8 Ball Mania", "0", "0", function () {        t = document.createElement("iframe");        (t.src = "https://isgames.github.io/8ball/"),          (t.width = "964"),          (t.height = "786"),          (t.style.border = "none"),          (t.style.zIndex = "2147483647"),          document.body.appendChild(t);      }),      n.Button("Cookie Clicker", "0", "0", function () {        t = document.createElement("iframe");        (t.src =          "https://advanced-channeler.02.gz-associates.com/?t=tmm-cookieclicker"),          (t.width = "964"),          (t.height = "786"),          (t.style.border = "none"),          (t.style.zIndex = "2147483647"),          document.body.appendChild(t);      }),      n.Button("Tab Spammer", "0", "0", function () {        var pr1 = prompt("number of times to open this page");        for (let i = 0; i < pr1; i++) {          window.open(document.location);        }      }),      n.Button("Iframe Page", "0", "0", function () {        let t = prompt("Link?");        (function () {          let iframe = document.createElement("iframe");          iframe.src = t;          iframe.style.width = "100%";          iframe.style.position = "fixed";          iframe.style.zIndex = "2147483647";          iframe.style.top = "0px";          iframe.style.left = "0px";          iframe.style.height = "100%";          iframe.style.border = "none";          iframe.style.width = "100%";          document.body.appendChild(iframe);        })();      }),      n.Button("I-Ready Fail", "0", "0", function () {        swal("Warning", "Feature is in progress", "warning", {          button: "CLOSE"        });      }),      n.Button("Play Scratch Project", "0", "0", function () {        let e = prompt("Project ID?"),          t = document.createElement("iframe");        (t.src = %60https://forkphorus.github.io/embed.html?id=${e}&auto-start=true&light-content=true%60),          (t.width = "482"),          (t.height = "393"),          (t.allowfullscreen = "true"),          (t.allowtransparency = "true"),          (t.zIndex = "2147483647"),          (t.style = "border:none"),          document.body.appendChild(t);      }),      n.Button("(0:03), bestaudio.mp3", "0", "0", function () {        const cringeAudio = new Audio(          "https://github.com/RumiCreator/buyrumiware/raw/main/bestaudio.mp3"        );        cringeAudio.loop = true;        cringeAudio.play();      }),      n.Button("(0:18), rumiFaazEEE.mp3", "0", "0", function () {        const cringeAudio = new Audio(          "https://github.com/RumiCreator/buyrumiware/raw/main/rumifaazEE.mp3"        );        cringeAudio.loop = true;        cringeAudio.play();      }),      n.Button("(0:18), Android Sound", "0", "0", function () {        const cringeAudio = new Audio(          "https://github.com/RumiCreator/buyrumiware/raw/main/android_notification_sound_effect_bass_boosted_8332815394720085473.mp3"        );        cringeAudio.loop = false;        cringeAudio.play();      }),      n.Button("Geometry Dash", "0", "0", function () {        let e = document.createElement("iframe");        (e.src =          "https://forkphorus.github.io/embed.html?id=105500895&auto-start=false&light-content=true"),          (e.width = "964"),          (e.height = "786"),          (e.allowfullscreen = "true"),          (e.allowtransparency = "true"),          (e.style = "border:none"),          document.body.appendChild(e);      });    var r = () =>        new Promise((e, t) => {          try {            let o = window.webpackJsonp              .map((e) => Object.keys(e[1]).map((t) => e[1][t]))              .reduce((e, t) => [...e, ...t], [])              .find(                (e) =>                  /\w{8}-\w{4}-\w{4}-\w{4}-\w{12}/.test(e.toString()) &&                  /\(new TextEncoder\)\.encode\(\"(.+?)\"\)/.test(e.toString())              )              .toString();            e({              blooketBuild: o.match(/\w{8}-\w{4}-\w{4}-\w{4}-\w{12}/)[0],              secret: o.match(/\(new TextEncoder\)\.encode\(\"(.+?)\"\)/)[1]            });          } catch {            t("Rumi-Ware failed to fetch authentication details..!");          }        }),      l = async (e, t) => {        let o = window.crypto.getRandomValues(new Uint8Array(12));        return window.btoa(          Array.from(o)            .map((e) => String.fromCharCode(e))            .join("") +            Array.from(              new Uint8Array(                await window.crypto.subtle.encrypt(                  { name: "AES-GCM", iv: o },                  await window.crypto.subtle.importKey(                    "raw",                    await window.crypto.subtle.digest(                      "SHA-256",                      new TextEncoder().encode(t)                    ),                    { name: "AES-GCM" },                    !1,                    ["encrypt"]                  ),                  new TextEncoder().encode(JSON.stringify(e))                )              )            )              .map((e) => String.fromCharCode(e))              .join("")        );      };    function i() {      return Object.values(document.querySelector("#app > div > div"))[1]        .children[1]._owner;    }    function d() {      return Object.values(Runner());    }    a.Button("Daily Rewards", "0", "0", function () {      alert("Rumi-Ware is adding your daily rewards...."),        fetch("https://api.blooket.com/api/users", { credentials: "include" })          .then((e) => e.json())          .then((e) => {            r()              .then(async (t) => {                fetch("https://api.blooket.com/api/users/add-rewards", {                  method: "put",                  credentials: "include",                  headers: {                    "content-type": "application/json",                    "X-Blooket-Build": t.blooketBuild                  },                  body: await l(                    { name: e.name, addedTokens: 250, addedXp: 300 },                    t.secret                  )                }),                  fetch("https://api.blooket.com/api/users/add-rewards", {                    method: "put",                    credentials: "include",                    headers: {                      "content-type": "application/json",                      "X-Blooket-Build": t.blooketBuild                    },                    body: await l(                      { name: e.name, addedTokens: 250, addedXp: 300 },                      t.secret                    )                  })                    .then(() =>                      alert(                        "Rumi-Ware has sucessfully added your daily rewards."                      )                    )                    .catch(() =>                      alert(                        "An error occured while trying to add your rewards."                      )                    );              })              .catch(() =>                alert("Failed to encode requests. This error is very rare.")              );          })          .catch(() => alert("There was an error getting your username."));    });    let c = !1,      p = !1,      u = !1;    a.Toggle("Auto Answer", "0", "0", function (e) {      c = e;    }),      a.Toggle("Highlight Answers", "0", "0", function (e) {        p = e;      }),      a.Button("GlizzyGUI", "0", "0", function () {        let e;        (e = document.createElement("iframe")),          document.body.append(e),          (window.alert = e.contentWindow.alert.bind(window)),          (window.prompt = e.contentWindow.prompt.bind(window)),          (window.confirm = e.contentWindow.confirm.bind(window)),          e.remove(),          (() => {            let e = document.createElement("style");            e.innerHTML = %60details > summary {    cursor: pointer;    transition: 0.15s;    list-style: none;}details > summary:hover {    color: hsl(0, 0%, 50%)}details > summary::-webkit-details-marker {    display: none;}details summary ~ * {    animation: sweep .5s ease-in-out;}@keyframes sweep {    0%    {opacity: 0; transform: translateY(-10px)}    100%  {opacity: 1; transform: translateY(0)}}.cheat {    border: none;    background: hsl(0, 0%, 20%);    padding: 5px;    margin: 3px;    width: 60%;    color: hsl(0, 0%, 100%);    transition: 0.2s;    border-radius: 5px;    cursor: pointer;}.cheat:hover {    background: hsl(0, 0%, 30%);}%60;            let t = document.createElement("div");            t.appendChild(e),              (t.style.width = "400px"),              (t.style.background = "hsl(0, 0%, 10%)"),              (t.style.borderRadius = "10px"),              (t.style.position = "absolute"),              (t.style.textAlign = "center"),              (t.style.fontFamily = "Nunito"),              (t.style.color = "white"),              (t.style.overflow = "hidden"),              (t.style.top = "50px"),              (t.style.left = "50px");            var o = 0,              n = 0,              a = 0,              s = 0;            t.onmousedown = (e = window.event) => {              e.preventDefault(),                (a = e.clientX),                (s = e.clientY),                (document.onmouseup = () => {                  (document.onmouseup = null), (document.onmousemove = null);                }),                (document.onmousemove = (e) => {                  (e = e || window.event).preventDefault(),                    (o = a - e.clientX),                    (n = s - e.clientY),                    (a = e.clientX),                    (s = e.clientY),                    (t.style.top = t.offsetTop - n + "px"),                    (t.style.left = t.offsetLeft - o + "px");                });            };            let r = document.createElement("div");            t.appendChild(r),              (r.style.width = "100%"),              (r.style.height = "35px"),              (r.style.paddingTop = "2px"),              (r.style.fontSize = "1.5rem"),              (r.style.textAlign = "center"),              (r.innerHTML =                'Blooket Cheats <span style="font-size: 0.75rem">v4.10.22</span>');            let l,              i = document.createElement("button");            r.appendChild(i),              (i.style.background = "red"),              (i.style.height = "45px"),              (i.style.width = "45px"),              (i.style.border = "none"),              (i.style.cursor = "pointer"),              (i.style.position = "absolute"),              (i.style.top = "-10px"),              (i.style.right = "-10px"),              (i.style.fontSize = "1.5rem"),              (i.style.borderRadius = "10px"),              (i.style.fontFamily = "Nunito"),              (i.style.fontWeight = "bolder"),              (i.style.paddingTop = "10px"),              (i.style.paddingRight = "15px"),              (i.innerText = "X"),              (i.onclick = () => {                t.remove(),                  clearInterval(l),                  removeEventListener("keypress", B);              });            let d = document.createElement("button");            r.appendChild(d),              (d.style.background = "#444444"),              (d.style.height = "45px"),              (d.style.width = "45px"),              (d.style.border = "none"),              (d.style.cursor = "pointer"),              (d.style.position = "absolute"),              (d.style.top = "-10px"),              (d.style.left = "-10px"),              (d.style.fontSize = "1.5rem"),              (d.style.borderRadius = "10px"),              (d.style.fontFamily = "Nunito"),              (d.style.fontWeight = "bolder"),              (d.style.paddingTop = "10px"),              (d.style.paddingLeft = "15px"),              (d.innerText = "-"),              (d.onclick = () => {                c.hidden = !c.hidden;              });            let c = document.createElement("div"),              p = document.createElement("div");            c.appendChild(p),              t.appendChild(c),              (p.innerHTML = %60<span id="curPageEl">${                N(!0) ? %60Current gamemode: ${N(!0)}%60 : "No game detected"              }</span><br><span>(Press E to hide)</span><br>%60),              (p.style.display = "block"),              (p.style.margin = "10px"),              (p.style.minHeight = "70px");            let u = document.createElement("span");            p.appendChild(u), document.body.append(t);            let h = document.createElement("div");            c.appendChild(h),              (h.style.fontSize = "0.9rem"),              (h.style.paddingBottom = "5px"),              (h.innerHTML =                '<span>GUI by OneMinesraft2#5394<br>Cheats by <a style="color: lightblue" href="https://twitter.com/glizuwu">gliz</a></span>');            var y = () =>                new Promise((e, t) => {                  try {                    let o = window.webpackJsonp                      .map((e) => Object.keys(e[1]).map((t) => e[1][t]))                      .reduce((e, t) => [...e, ...t], [])                      .find(                        (e) =>                          /\w{8}-\w{4}-\w{4}-\w{4}-\w{12}/.test(e.toString()) &&                          /\(new TextEncoder\)\.encode\(\"(.+?)\"\)/.test(                            e.toString()                          )                      )                      .toString();                    e({                      blooketBuild: o.match(                        /\w{8}-\w{4}-\w{4}-\w{4}-\w{12}/                      )[0],                      secret: o.match(                        /\(new TextEncoder\)\.encode\(\"(.+?)\"\)/                      )[1]                    });                  } catch {                    t("Could not fetch auth details");                  }                }),              m = async (e, t) => {                let o = window.crypto.getRandomValues(new Uint8Array(12));                return window.btoa(                  Array.from(o)                    .map((e) => String.fromCharCode(e))                    .join("") +                    Array.from(                      new Uint8Array(                        await window.crypto.subtle.encrypt(                          { name: "AES-GCM", iv: o },                          await window.crypto.subtle.importKey(                            "raw",                            await window.crypto.subtle.digest(                              "SHA-256",                              new TextEncoder().encode(t)                            ),                            { name: "AES-GCM" },                            !1,                            ["encrypt"]                          ),                          new TextEncoder().encode(JSON.stringify(e))                        )                      )                    )                      .map((e) => String.fromCharCode(e))                      .join("")                );              };            function $() {              return Object.values(                document.querySelector("#app > div > div")              )[1].children[1]._owner;            }            let f,              g,              w,              b,              k,              _ = {                global: {                  "Get Daily Rewards"() {                    fetch("https://api.blooket.com/api/users", {                      credentials: "include"                    })                      .then((e) => e.json())                      .then((e) => {                        y()                          .then(async (t) => {                            fetch(                              "https://api.blooket.com/api/users/add-rewards",                              {                                method: "put",                                credentials: "include",                                headers: {                                  "content-type": "application/json",                                  "X-Blooket-Build": t.blooketBuild                                },                                body: await m(                                  {                                    name: e.name,                                    addedTokens: 250,                                    addedXp: 300                                  },                                  t.secret                                )                              }                            ),                              fetch(                                "https://api.blooket.com/api/users/add-rewards",                                {                                  method: "put",                                  credentials: "include",                                  headers: {                                    "content-type": "application/json",                                    "X-Blooket-Build": t.blooketBuild                                  },                                  body: await m(                                    {                                      name: e.name,                                      addedTokens: 250,                                      addedXp: 300                                    },                                    t.secret                                  )                                }                              )                                .then(() => alert("Added daily rewawrds!"))                                .catch(() =>                                  alert(                                    "There was an error when adding rewards!"                                  )                                );                          })                          .catch(() =>                            alert("There was an error encoding requests!")                          );                      })                      .catch(() =>                        alert("There was an error getting username!")                      );                  },                  "Spoof Blooks"() {                    if (!window.location.pathname.split("/").includes("lobby"))                      return alert(                        "You must be in a game lobby! (e.g. https://www.blooket.com/play/lobby)"                      );                    $().stateNode.setState({                      lockedBlooks: [],                      takenBlooks: []                    });                  },                  "Toggle Auto Answer"() {                    f = !f;                  },                  "Toggle Highlight Answers"() {                    g = !g;                  },                  "Spam Open Boxes"() {                    let e = prompt(                        "Which box do you want to open? (e.g. Space)"                      ),                      t = {                        safari: 25,                        aquatic: 20,                        bot: 20,                        space: 20,                        breakfast: 15,                        medieval: 15,                        wonderland: 15                      };                    if (!Object.keys(t).includes(e.toLowerCase()))                      return alert("I could not find that box!");                    let o = prompt("How many boxes do you want to open?");                    fetch("https://api.blooket.com/api/users", {                      credentials: "include"                    })                      .then((e) => e.json())                      .then((n) => {                        if (                          (n.tokens < t[e.toLowerCase()] * o &&                            (o = Math.floor(n.tokens / t[e.toLowerCase()])),                          !o)                        )                          return alert("You do not have enough tokens!");                        let a = (e) => new Promise((t) => setTimeout(t, e));                        y()                          .then(async (t) => {                            let s = !1,                              r = [];                            for (                              let l = 0;                              l < o &&                              (fetch(                                "https://api.blooket.com/api/users/unlockblook",                                {                                  method: "put",                                  credentials: "include",                                  headers: {                                    "content-type": "application/json",                                    "X-Blooket-Build": t.blooketBuild                                  },                                  body: await m(                                    {                                      name: n.name,                                      box:                                        e.charAt(0).toUpperCase() +                                        e.slice(1).toLowerCase()                                    },                                    t.secret                                  )                                }                              )                                .then(async (e) => {                                  let t = await e.json();                                  r.push(t.unlockedBlook),                                    alert(%60${t.unlockedBlook} (${l + 1}/${o})%60);                                })                                .catch(() => {                                  s = !0;                                }),                              await a(750),                              !s);                              l++                            );                            let i = {};                            r.forEach((e) => {                              i[e] = (i[e] || 0) + 1;                            }),                              alert(                                %60Results:%60 +                                  Object.entries(i).map(                                    (e) => %60    ${e[1]} ${e[0]}%60                                  ).join(%60%60)                              );                          })                          .catch(() =>                            alert("There was an error encoding requests!")                          );                      })                      .catch(() =>                        alert("There was an error getting username!")                      );                  },                  "Auto Sell Dupes"() {                    fetch("https://api.blooket.com/api/users", {                      credentials: "include"                    })                      .then((e) => e.json())                      .then((e) => {                        let t = Object.entries(e.unlocks)                            .map((e) => [e[0], e[1] - 1])                            .filter((e) => e[1] > 0),                          o = (e) => new Promise((t) => setTimeout(t, e));                        y()                          .then(async (n) => {                            let a = !1;                            for (let [s, r] of (alert(                              "Selling duplicate blooks, please wait"                            ),                            t))                              if (                                (fetch(                                  "https://api.blooket.com/api/users/sellblook",                                  {                                    method: "put",                                    credentials: "include",                                    headers: {                                      "content-type": "application/json",                                      "X-Blooket-Build": n.blooketBuild                                    },                                    body: await m(                                      { name: e.name, blook: s, numSold: r },                                      n.secret                                    )                                  }                                ).catch(() => {                                  a = !0;                                }),                                await o(750),                                a)                              )                                break;                            alert(                              %60Results:%60 +                                t.map((e) => %60    ${e[1]} ${e[0]}%60).join(%60%60)                            );                          })                          .catch(() =>                            alert("There was an error encoding requests!")                          );                      })                      .catch(() =>                        alert("There was an error getting user data!")                      );                  }                },                cafe: {                  "Infinite Food"() {                    if ("/cafe" != document.location.pathname)                      return alert("This cheat doesn't work in the shop!");                    $().stateNode.state.foods.forEach((e) => (e.stock = 99999)),                      $().stateNode.forceUpdate();                  },                  "Max Levels"() {                    if ("/cafe/shop" != document.location.pathname)                      return alert("This cheat only works in the shop!");                    Object.keys($().stateNode.state.items).forEach(                      (e) => ($().stateNode.state.items[e] = 5)                    ),                      $().stateNode.forceUpdate();                  },                  "Set Cash"() {                    $().stateNode.setState({                      cafeCash: Number(                        parseFloat(prompt("How much cash would you like?"))                      )                    });                  },                  "Reset Abilities"() {                    Object.keys($().stateNode.state.abilities).forEach(                      (e) => ($().stateNode.state.abilities[e] = 5)                    ),                      $().stateNode.forceUpdate();                  }                },                kingdom: {                  "Choice ESP"() {                    w = !w;                  },                  "Max Stats"() {                    $().stateNode.setState({                      materials: 100,                      people: 100,                      happiness: 100,                      gold: 100                    });                  },                  "Disable Toucan"() {                    $().stateNode.taxCounter = Number.MAX_VALUE;                  },                  "Set Guests"() {                    let e = Number(                      parseFloat(prompt("How many guests do you want?"))                    );                    $().stateNode.setState({ guestScore: e });                  },                  "Skip Guest"() {                    $().stateNode.nextGuest();                  }                },                crypto: {                  "Auto Hack"() {                    b = !b;                  },                  "Set Crypto"() {                    let e = Number(                      parseFloat(prompt("How much crypto do you want?"))                    );                    $().stateNode.setState({ crypto2: e, crypto: e });                  },                  "Custom Password"() {                    let e = Number(                      parseFloat(                        prompt("What do you want to set your password to?")                      )                    );                    $().stateNode.setState({ password: e });                  },                  "Remove Hack"() {                    $().stateNode.setState({ hack: "" });                  },                  "Reset Player's Crypto"() {                    let e = prompt("Name of player"),                      t = $();                    e &&                      t.memoizedProps.firebase.getDatabaseVal(                        t.memoizedProps.client.hostId,                        "c",                        (...o) => {                          let n = Object.keys(o[0]);                          n.some((t) => t == e)                            ? n.forEach((n) => {                                n == e &&                                  (t.memoizedProps.firebase.setVal({                                    id: t.memoizedProps.client.hostId,                                    path: "c/" + t.memoizedProps.client.name,                                    val: {                                      p: t.stateNode.state.password,                                      b: t.memoizedProps.client.blook,                                      cr: t.stateNode.state.crypto,                                      tat: n + ":" + (o[0][n].cr || 0)                                    }                                  }),                                  alert("Reset player's crypto"));                              })                            : alert("Player does not exist");                        }                      );                  }                },                factory: {                  "All Mega Bot"() {                    let e = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0].fill({                      name: "Mega Bot",                      color: "#d71f27",                      class: "\uD83E\uDD16",                      rarity: "Legendary",                      cash: [8e4, 43e4, 42e5, 62e6, 1e9],                      time: [5, 5, 3, 3, 3],                      price: [7e6, 12e7, 19e8, 35e9],                      active: !1,                      level: 4,                      bonus: 5.5                    });                    $().stateNode.setState({ blooks: e });                  },                  "Remove Glitches"() {                    $().stateNode.setState({                      glitch: "",                      bites: 0,                      ads: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],                      hazards: ["", "", "", "", ""],                      lol: !1,                      joke: !1,                      slow: !1,                      dance: !1,                      popUpAmount: 0                    });                  },                  "Max Blooks"() {                    $().stateNode.state.blooks.forEach((e) => {                      e.level = 4;                    });                  },                  "Set Cash"() {                    let e = Number(                      parseFloat(prompt("How much cash do you want?"))                    );                    $().stateNode.setState({ cash: e });                  }                },                fishing: {                  "Set Weight"() {                    let e = Number(                      parseFloat(prompt("How much weight do you want?"))                    );                    $().stateNode.setState({ weight2: e, weight: e });                  },                  "Set Lure"() {                    let e =                      Number(                        parseFloat(                          prompt(                            "What do you want to set your lure to? (1 - 5)"                          )                        )                      ) - 1;                    $().stateNode.setState({ lure: e < 0 ? 0 : e > 4 ? 4 : e });                  }                },                gold: {                  "Set Gold"() {                    let e = Number(                      parseFloat(prompt("How much gold do you want?"))                    );                    $().stateNode.setState({ gold2: e, gold: e });                  },                  "Chest ESP"() {                    k = !k;                  },                  "Set Player's Gold"() {                    let e = $(),                      t = prompt("Player to set gold"),                      o = Number(parseFloat(prompt("Amount to set gold to")));                    e.memoizedProps.firebase.setVal({                      id: e.memoizedProps.client.hostId,                      path: "c/" + e.memoizedProps.client.name,                      val: {                        b: e.memoizedProps.client.blook,                        g: e.stateNode.state.gold,                        tat: t + ":swap:" + o                      }                    });                  }                },                racing: {                  "Instant Win"() {                    $().stateNode.setState({                      progress: $().stateNode.state.goalAmount                    }),                      setTimeout(() => {                        try {                          Array.from(                            document.body.querySelectorAll(                              'div[class*="answerText"]'                            )                          )                            .filter(                              (e) =>                                e.firstChild.innerHTML ==                                $().memoizedState.question.correctAnswers[0]                            )[0]                            .click();                        } catch {                          try {                            Array.from(                              document.body.querySelectorAll(                                'div[class*="answerText"]'                              )                            )                              .filter(                                (e) =>                                  e.firstChild.innerHTML ==                                  $().memoizedProps.client.question                                    .correctAnswers[0]                              )[0]                              .click();                          } catch {}                        }                      }, 100);                  }                },                defense: {                  "Clear Enemies"() {                    $().stateNode.enemies = [];                  },                  "Max Towers"() {                    $().stateNode.towers.forEach((e) => {                      (e.damage = 99999999),                        (e.range = 99999999),                        (e.fullCd = 0);                    });                  },                  "Remove Ducks"() {                    (data = $().stateNode).ducks.forEach((e) => {                      data.tiles[e.y][e.x] = 0;                    }),                      (data.ducks.length = 0);                  },                  "Place Towers Anywhere"() {                    $().stateNode.tiles = $().stateNode.tiles.map((e) =>                      e.map((e) => (2 == e ? 0 : e))                    );                  },                  "Set Damage"() {                    let e = Number(                      parseFloat(prompt("How much damage do you want?"))                    );                    $().stateNode.dmg = e;                  },                  "Set Round"() {                    let e = Number(                      parseFloat(prompt("What round do you want to set it to?"))                    );                    $().stateNode.setState({ round: e });                  },                  "Set Tokens"() {                    let e = Number(                      parseFloat(prompt("How many tokens do you want?"))                    );                    $().stateNode.setState({ tokens: e });                  }                },                doom: {                  "Set Coins"() {                    try {                      $().stateNode.props.setTowerCoins(                        Number(                          parseFloat(prompt("How many coins do you want?"))                        )                      );                    } catch {}                  },                  "Lower Enemy Stats"() {                    let e = $().stateNode.state;                    if ("select" != e.phase)                      return alert(                        "You must be on the attribute selection page!"                      );                    $().stateNode.setState({                      enemyCard: {                        ...e.enemyCard,                        strength: 0,                        charisma: 0,                        wisdom: 0                      }                    });                  },                  "Max Player Stats"() {                    let e = $().stateNode.state;                    if ("select" != e.phase)                      return alert(                        "You must be on the attribute selection page!"                      );                    $().stateNode.setState({                      myCard: {                        ...e.myCard,                        strength: 20,                        charisma: 20,                        wisdom: 20                      }                    });                  },                  "Heal Player"() {                    $().stateNode.setState({ myLife: 100 });                  }                },                rush: {                  "Set Defense"() {                    let e = $();                    e.stateNode.props.firebase.setVal({                      id: e.stateNode.props.client.hostId,                      path: "c/" + e.stateNode.props.client.name + "/d",                      val: Number(                        parseFloat(prompt("How much defense do you want?"))                      )                    });                  },                  "Set Blooks"() {                    let e = $();                    e.stateNode.props.firebase.setVal({                      id: e.stateNode.props.client.hostId,                      path: "c/" + e.stateNode.props.client.name + "/bs",                      val: Number(                        parseFloat(prompt("How many blooks do you want?"))                      )                    });                  }                }              },              x = document.createElement("details");            x.innerHTML =              '<summary style="padding: 10px; font-size: 1.5em; font-weight: bolder">Global</summary>';            for (var S = 0; S < Object.keys(_.global).length; S++) {              let v = E(Object.keys(_.global)[S]);              (v.onclick = _.global[Object.keys(_.global)[S]]),                x.appendChild(v);            }            (x.open = !0), (x.style.paddingBottom = "10px"), p.appendChild(x);            let C = document.createElement("div");            p.appendChild(C),              (l = setInterval(() => {                T != N() &&                  ((T = N()),                  (curPageEl.innerText = N(!0)                    ? %60Current gamemode: ${N(!0)}%60                    : "No game detected"),                  Array.from(C.children).forEach((e) => e.remove()),                  T &&                    _[T] &&                    Object.keys(_[T]).forEach((e) => {                      let t = E(e);                      (t.onclick = _[T][e]),                        C.appendChild(t),                        C.appendChild(document.createElement("br"));                    }));                let e = %60Auto Answer: ${f ? "Enabled" : "Disabled"}Highlight Answers: ${g ? "Enabled" : "Disabled"}${                  "kingdom" == T                    ? %60Choice ESP: ${w ? "Enabled" : "Disabled"}%60                    : "crypto" == T                    ? %60Auto Hack: ${b ? "Enabled" : "Disabled"}%60                    : "gold" == T                    ? %60Chest ESP: ${k ? "Enabled" : "Disabled"}%60                    : ""                }%60;                if ((u.innerText != e && (u.innerText = e), f))                  try {                    Array.from(                      document.body.querySelectorAll('div[class*="answerText"]')                    )                      .filter(                        (e) =>                          e.firstChild.innerHTML ==                          $().memoizedState.question.correctAnswers[0]                      )[0]                      .click();                  } catch {                    try {                      Array.from(                        document.body.querySelectorAll(                          'div[class*="answerText"]'                        )                      )                        .filter(                          (e) =>                            e.firstChild.innerHTML ==                            $().memoizedProps.client.question.correctAnswers[0]                        )[0]                        .click();                    } catch {}                  }                if (g)                  try {                    Array.from(                      document.querySelector('div[class*="answersHolder"')                        .children                    ).forEach((e) => {                      $().memoizedState.question.correctAnswers.includes(                        e.innerText                      ) ||                      $().memoizedProps.client.question.correctAnswers.includes(                        e.innerText                      )                        ? (e.firstChild.style =                            "background-color: rgb(0, 207, 119);")                        : (e.firstChild.style =                            "background-color: rgb(225, 40, 33);");                    });                  } catch {}                if (                  "kingdom" == T &&                  (Array.from(                    document.getElementsByClassName("choiceESP")                  ).forEach((e) => e.remove()),                  w)                )                  try {                    let t = {                        materials: Array.from(                          document.querySelectorAll("div")                        ).find((e) =>                          Array.from(e.children).find((e) =>                            e.className.includes("tree")                          )                        ),                        people: Array.from(                          document.querySelectorAll("div")                        ).find((e) =>                          Array.from(e.children).find(                            (e) =>                              e.className.includes("users") &&                              e.parentElement.className.includes(                                "statContainer"                              )                          )                        ),                        happiness: Array.from(                          document.querySelectorAll("div")                        ).find((e) =>                          Array.from(e.children).find((e) =>                            e.className.includes("grin")                          )                        ),                        gold: Array.from(                          document.querySelectorAll("div")                        ).find((e) =>                          Array.from(e.children).find((e) =>                            e.className.includes("coins")                          )                        )                      },                      o = $().stateNode.state.guest;                    Object.entries(o.yes).forEach((e) => {                      if ("msg" == e[0]) return;                      let o = document.createElement("div");                      (o.className = "choiceESP"),                        (o.style =                          "font-size: 24px; color: rgb(75, 194, 46); font-weight: bolder;"),                        (o.innerText = String(e[1])),                        t[e[0]].appendChild(o);                    }),                      Object.entries(o.no).forEach((e) => {                        if ("msg" == e[0]) return;                        let o = document.createElement("div");                        (o.className = "choiceESP"),                          (o.style =                            "font-size: 24px; color: darkred; font-weight: bolder;"),                          (o.innerText = String(e[1])),                          t[e[0]].appendChild(o);                      });                  } catch (n) {}                if ("crypto" == T && b) {                  let { stage: a, correctPassword: s } = Object.values(                    document.querySelector("#app > div > div")                  )[1].children[1]._owner.stateNode.state;                  "hack" == a &&                    Array.from(document.querySelectorAll("div"))                      .filter((e) => e.innerHTML == s)[0]                      .click();                }                if ("gold" == T && k)                  try {                    if ("prize" == $().stateNode.state.stage) {                      let { choices: r } = $().stateNode.state,                        l = document.querySelector("div[class*='regularBody']")                          .children[1];                      l &&                        (document.querySelectorAll(".chest-esp").length                          ? r.forEach((e, t) => {                              3 == l.children.length &&                                l.children[t].children[1].innerText != e.text &&                                (l.children[t].children[1].innerText = e.text);                            })                          : r.forEach((e, t) => {                              ((textElement = document.createElement(                                "p"                              )).className = "chest-esp"),                                (textElement.innerText = e.text),                                (textElement.style = %60text-align: center;                    font-size: 30px;                    color: white;                    font-family:Titan One;                    sans-serif;                    border-color: black;                    margin-top: 200px;%60);                              try {                                l.children[t].appendChild(textElement);                              } catch (o) {                                console.log(o);                              }                            }));                    }                  } catch (i) {                    console.log(i);                  }              }));            let T = N();            function E(e) {              let t = document.createElement("button");              return t.classList.add("cheat"), (t.innerText = e), t;            }            function N(e) {              switch (window.location.pathname.split("/")[2]) {                case "rush":                  return e ? "Blook Rush" : "rush";                case "gold":                  return e ? "Gold Quest" : "gold";                case "fishing":                  return e ? "Fishing Frenzy" : "fishing";                case "hack":                  return e ? "Crypto Hack" : "crypto";                case "battle-royale":                  return e ? "Battle Royale" : "royale";                case "factory":                  return e ? "Factory" : "factory";                case "racing":                  return e ? "Racing" : "racing";                case "classic":                  return e ? "Classic" : "classic";                default:                  switch (window.location.pathname.split("/")[1]) {                    case "defense":                      return e ? "Tower Defense" : "defense";                    case "cafe":                      return e ? "Caf\xe9" : "cafe";                    case "tower":                      return e ? "Tower of Doom" : "doom";                    case "kingdom":                      return e ? "Crazy Kingdom" : "kingdom";                    default:                      return !1;                  }              }            }            function B(e) {              "KeyE" == e.code && (t.hidden = !t.hidden);            }            T &&              _[T] &&              Object.keys(_[T]).forEach((e) => {                let t = E(e);                (t.onclick = _[T][e]),                  C.appendChild(t),                  C.appendChild(document.createElement("br"));              }),              addEventListener("keypress", B);          })();      }),      a.Button("Set Cash (Factory)", "0", "0", function () {        let e = Number(parseFloat(prompt("How much cash do you want?")));        i().stateNode.setState({ cash: e });      }),      a.Button("Mega Bot (Factory", "0", "0", function () {        let e = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0].fill({          name: "Mega Bot",          color: "#d71f27",          class: "\uD83E\uDD16",          rarity: "Legendary",          cash: [8e4, 43e4, 42e5, 62e6, 1e9],          time: [5, 5, 3, 3, 3],          price: [7e6, 12e7, 19e8, 35e9],          active: !1,          level: 4,          bonus: 5.5        });        i().stateNode.setState({ blooks: e });      }),      a.Button("SetCrypto (Crypto)", "0", "0", function () {        let e = Number(parseFloat(prompt("How much crypto do you want?")));        i().stateNode.setState({ crypto2: e, crypto: e });      }),      a.Toggle("AutoPassword (Crypto)", "0", "0", function (e) {        u = e;      }),      a.Button("Set Weight (Fishing)", "0", "0", function () {        let e = Number(parseFloat(prompt("How much weight do you want?")));        i().stateNode.setState({ weight2: e, weight: e });      }),      a.Button("Set Lure (Fishing)", "0", "0", function () {        let e =          Number(            parseFloat(prompt("What do you want to set your lure to? (1 - 5)"))          ) - 1;        i().stateNode.setState({ lure: e < 0 ? 0 : e > 4 ? 4 : e });      }),      a.Button("Set Tokens (TD)", "0", "0", function () {        let e = Number(parseFloat(prompt("How many tokens do you want?")));        i().stateNode.setState({ tokens: e });      }),      a.Button("Clear Enemies (TD)", "0", "0", function () {        i().stateNode.enemies = [];      }),      s.Button("Set Gravity", "0", "0", function () {        let e = Number(          parseFloat(prompt("How much gravity do you want? (Normal 0.6)"))        );        d()[12].GRAVITY = e;      }),      s.Button("Kahmron's True Power", "0", "0", function () {        (d()[3].SPEED = 6e3), (d()[3].GRAVITY = 0);      }),      s.Button("Set Game Speed", "0", "0", function () {        let e = Number(          parseFloat(            prompt(              "Kahmron has granted you the wish of time. (Normal Game Speed 1)"            )          )        );        d()[3].SPEED = e;      }),      s.Button("Set Dino Speed", "0", "0", function () {        let e = Number(parseFloat(prompt("Enter dinosaur speed.")));        Runner.instance_.setSpeed(e);      }),      s.Button("Set Dino Jump", "0", "0", function () {        parseFloat(prompt("Enter dinosaur jump height.")),          Runner.instance_.tRex.setJumpVelocity(15);      });    try {      var h = DinoHandler().prototype.gameOver;    } catch {}    s.Toggle("Invincibiity", "0", "0", function (e) {      !0 == e        ? (Runner.prototype.gameOver = h)        : (Runner.prototype.gameOver = function () {});    }),      setInterval(() => {        if (!0 == c && c)          try {            Array.from(              document.body.querySelectorAll('div[class*="answerText"]')            )              .filter(                (e) =>                  e.firstChild.innerHTML ==                  i().memoizedState.question.correctAnswers[0]              )[0]              .click();          } catch {            try {              Array.from(                document.body.querySelectorAll('div[class*="answerText"]')              )                .filter(                  (e) =>                    e.firstChild.innerHTML ==                    i().memoizedProps.client.question.correctAnswers[0]                )[0]                .click();            } catch {}          }        if (p)          try {            Array.from(              document.querySelector('div[class*="answersHolder"').children            ).forEach((e) => {              i().memoizedState.question.correctAnswers.includes(e.innerText) ||              i().memoizedProps.client.question.correctAnswers.includes(                e.innerText              )                ? (e.firstChild.style = "background-color: rgb(0, 207, 119);")                : (e.firstChild.style = "background-color: rgb(225, 40, 33);");            });          } catch {}      }, 10);  }),  (readWhitelist = function () {    let x = document.createElement("div");    x.style.zIndex = 2147483647;    x.style = %60        position: "fixed",        top: "10px",        left: "10px",        height: "150px",        width: "150px",        background-color: "grey",        transition: "background-color 1s"      %60;    document.body.appendChild(x);    let i = document.createElement("input");    i.type = "password";    i.style.zIndex = 2147483647;    i.style.position = "absolute";    i.style.top = "20px";    i.style.left = "20px";    x.appendChild(i);    let b = document.createElement("button");    b.innerHTML = "enter";    b.style.zIndex = 2147483647;    b.style.position = "absolute";    b.style.top = "50px";    b.style.left = "20px";    b.onclick = function () {      ["poopoop1234!", "6411hacker", "rumiForever"].forEach((t) => {        t === i.value && init();        t === i.value && x.remove();      });    };    x.appendChild(b);  })();
+/* no details need to be included with what im doing here. */
+
+(() => {
+  let e = document.createElement("iframe");
+  document.body.append(e),
+    (window.alert = e.contentWindow.alert.bind(window)),
+    (window.prompt = e.contentWindow.prompt.bind(window)),
+    (window.confirm = e.contentWindow.confirm.bind(window)),
+    e.remove();
+})(),
+  (init = () => {
+    let e = document.createElement("script");
+    (e.src = "https://unpkg.com/sweetalert/dist/sweetalert.min.js"),
+      document.body.appendChild(e);
+    let t = {
+        executeScript: function (e) {
+          let t = document.createElement("script");
+          (t.innerHTML = "function hi(){" + e + "}"),
+            document.body.appendChild(t),
+            setTimeout(() => {
+              setTimeout(() => {
+                t.remove();
+              }, 500);
+            }, 1e3);
+        },
+        new: function (e, t, o) {
+          let n;
+          console.log("window successfully loaded");
+          let a = document.createElement("div"),
+            s = document.createElement("div"),
+            r = document.createElement("div");
+          a.style.overflowY = "scroll";
+          var l = 0,
+            i = 0,
+            d = 0,
+            c = 0;
+          return (
+            (s.onmousedown = (e = window.event) => {
+              e.preventDefault(),
+                (d = e.clientX),
+                (c = e.clientY),
+                (document.onmouseup = () => {
+                  (document.onmouseup = null), (document.onmousemove = null);
+                }),
+                (document.onmousemove = (e) => {
+                  (e = e || window.event).preventDefault(),
+                    (l = d - e.clientX),
+                    (i = c - e.clientY),
+                    (d = e.clientX),
+                    (c = e.clientY),
+                    (s.style.top = s.offsetTop - i + "px"),
+                    (s.style.left = s.offsetLeft - l + "px");
+                });
+            }),
+            (s.className = "rwTop"),
+            (s.style.position = "fixed"),
+            (s.style.textAlign = "center"),
+            (s.style.fontSize = "10px"),
+            (s.style.boxShadow = "5px 5px 5px darkGrey"),
+            (s.style.top = t),
+            (s.style.left = o),
+            (s.style.height = "30px"),
+            (s.style.width = "150px"),
+            (s.style.borderRadius = "10px"),
+            (s.style.zIndex = 2147483647),
+            (s.style.backgroundColor = "#222"),
+            e.appendChild(s),
+            (r.className = "rwTop2"),
+            (r.style.position = "absolute"),
+            (r.style.top = "20px"),
+            (r.style.boxShadow = "5px 5px 5px darkGrey"),
+            (r.style.left = "0px"),
+            (r.style.height = "17px"),
+            (r.style.width = "150px"),
+            (r.style.borderRadius = "0px"),
+            (r.style.zIndex = 2147483647),
+            (r.style.backgroundColor = "#222"),
+            s.appendChild(r),
+            (a.className = "rwName"),
+            (a.style.position = "absolute"),
+            (a.style.top = "20px"),
+            (a.style.left = "0px"),
+            (a.style.height = "200px"),
+            (a.style.boxShadow = "5px 5px 5px darkGrey"),
+            (a.style.width = "150px"),
+            (s.style.transition =
+              "background-color 0.5s, filter 0.5s, display 0.5s"),
+            (a.style.borderRadius = "10px"),
+            (a.style.zIndex = 2147483647),
+            (a.style.backgroundColor = "#333"),
+            (s.style.filter = "blur(1px)"),
+            s.appendChild(a),
+            s.addEventListener("mouseover", () => {
+              s.style.filter = "blur(0px)";
+            }),
+            s.addEventListener("mouseout", () => {
+              s.style.filter = "blur(1px)";
+            }),
+            {
+              ToggleWindow: function (e) {
+                !0 == e
+                  ? (s.style.display = "block")
+                  : (s.style.display = "none");
+              },
+              Destroy: function () {
+                s.remove();
+              },
+              toggleKeyBinds: function (e) {
+                n = e;
+              },
+              Notify: function (e, t) {
+                let o = document.createElement("div"),
+                  n = document.createElement("h2"),
+                  a = document.createElement("p");
+                (n.style.position = "relative"),
+                  (n.style.color = "lightGrey"),
+                  (n.innerHTML = e),
+                  (n.style.left = "15px"),
+                  (a.style.position = "relative"),
+                  (a.style.left = "15px"),
+                  (a.style.color = "white"),
+                  (a.style.top = "-10px"),
+                  (a.innerHTML = t),
+                  (o.zIndex = 2147483647),
+                  (o.style.position = "fixed"),
+                  (o.style.top = "70%"),
+                  (o.style.left = "85%"),
+                  (o.style.height = "100px"),
+                  (o.style.width = "250px"),
+                  (o.style.borderRadius = "5px"),
+                  (o.style.backgroundColor = "#222"),
+                  document.body.appendChild(o),
+                  o.appendChild(n),
+                  o.appendChild(a),
+                  setTimeout(() => {
+                    o.remove();
+                  }, 5e3),
+                  o.addEventListener("click", () => {
+                    o.remove();
+                  });
+              },
+
+              Toggle: function (e, t, o, n) {
+                let s = document.createElement("button"),
+                  r = !1;
+                (s.innerHTML = `<summary>${e}</summary>`),
+                  (s.style.height = "30px"),
+                  (s.style.width = "150px"),
+                  (s.zIndex = 2147483647),
+                  (s.style.border = "none"),
+                  (s.style.position = "relative"),
+                  (s.style.top = t + "px"),
+                  (s.style.left = o + "px"),
+                  (s.style.borderRadius = "0px"),
+                  (s.style.transition = "background-color 0.5s"),
+                  (s.style.borderRadius = "0px"),
+                  (s.style.backgroundColor = "#222"),
+                  (s.style.color = "white"),
+                  s.addEventListener("mouseover", (e) => {
+                    !0 != r && (s.style.backgroundColor = "#555");
+                  }),
+                  s.addEventListener("mouseout", (e) => {
+                    !0 != r && (s.style.backgroundColor = "#222");
+                  }),
+                  s.addEventListener("click", (e) => {
+                    !1 == r
+                      ? (setTimeout(() => {
+                          n(r);
+                        }, 100),
+                        (s.style.backgroundColor = "#1fd1bf"),
+                        (r = !0))
+                      : ((r = !1),
+                        setTimeout(() => {
+                          n(r);
+                        }, 100),
+                        (s.style.backgroundColor = "#222"));
+                  }),
+                  a.appendChild(s);
+              },
+
+              Button: function (e, t, o, n) {
+                let s = document.createElement("button");
+                (s.innerHTML = `<summary>${e}</summary>`),
+                  (s.style.height = "30px"),
+                  (s.style.width = "150px"),
+                  (s.zIndex = 2147483647),
+                  (s.style.position = "relative"),
+                  (s.style.top = t + "px"),
+                  (s.style.border = "none"),
+                  (s.style.left = o + "px"),
+                  (s.style.transition = "background-color 0.5s"),
+                  (s.style.backgroundColor = "#222"),
+                  (s.style.color = "white"),
+                  s.addEventListener("mouseover", (e) => {
+                    s.style.backgroundColor = "#555";
+                  }),
+                  s.addEventListener("mouseout", (e) => {
+                    s.style.backgroundColor = "#222";
+                  }),
+                  s.addEventListener("click", (e) => {
+                    n();
+                  }),
+                  a.appendChild(s);
+              },
+
+              Label: function (e, t, o) {
+                let s = document.createElement("button");
+                (s.innerHTML = `<summary>${e}</summary>`),
+                  (s.style.fontWeight = "900"),
+                  (s.style.height = "20px"),
+                  (s.style.width = "150px"),
+                  (s.zIndex = 2147483647),
+                  (s.style.position = "relative"),
+                  (s.style.top = t + "px"),
+                  (s.style.left = o + "px"),
+                  (s.style.borderRadius = "0px"),
+                  (s.style.border = "solid grey 2px"),
+                  (s.style.transition = "background-color 0.5s"),
+                  (s.style.backgroundColor = "#222"),
+                  (s.style.color = "lightGrey"),
+                  a.appendChild(s);
+              }
+            }
+          );
+        }
+      },
+      o = t.new(document.body, "20px", "20px"),
+      n = t.new(document.body, "20px", "200px"),
+      a = t.new(document.body, "20px", "380px"),
+      s = t.new(document.body, "20px", "560px");
+    o.ToggleWindow(!0),
+      n.ToggleWindow(!1),
+      a.ToggleWindow(!1),
+      s.ToggleWindow(!1),
+      o.Notify("Notification", "Welcome to Rumi-Ware 5 Max"),
+      o.Label("Early Access", "0", "0"),
+      o.Toggle("Trolling", "0", "0", function (e) {
+        n.ToggleWindow(e);
+      }),
+      o.Toggle("Blooket", "0", "0", function (e) {
+        a.ToggleWindow(e);
+      }),
+      o.Toggle("Dino Game", "0", "0", function (e) {
+        s.ToggleWindow(e);
+      }),
+      o.Button("Ovo Invincibility", "0", "0", function () {
+        let canvas = document.querySelector("#c2canvas");
+        canvas.c2runtime.groups_by_name.enemies = null;
+      }),
+      n.Label("Trolling", "0", "0"),
+      n.Button("HMH Banned", "0", "0", function () {
+        window.location.href =
+          "https://api.eng.hmhco.com/okta-ed-sp/api/v1/error?traceId=YUgdhw813hsa&error=Terminated&error_description=You%27ve%20been%20terminated%20from%20HMH.%20Please%20contact%20your%20teacher%20for%20more%20info.%20Reason:%20Attemption%20of%20hacking%20and%20cheating%20in%20HMH.&errorCode=2006";
+      }),
+      n.Button("Run 3", "0", "0", function () {
+        t = document.createElement("iframe");
+        (t.src = "https://lekug.github.io/tn6pS9dCf37xAhkJv/"),
+          (t.width = "482"),
+          (t.height = "393"),
+          (t.style.border = "none"),
+          (t.style.zIndex = "2147483647"),
+          document.body.appendChild(t);
+      }),
+      n.Button("Angry Birds", "0", "0", function () {
+        t = document.createElement("iframe");
+        (t.src =
+          "https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/fr6ks8ab/vi9syd1rm@1d542582dcaee7ab79cfa3031e3d5d7cd1769f0c/js72bx/vd8g3s.xml"),
+          (t.width = "482"),
+          (t.height = "393"),
+          (t.style.border = "none"),
+          (t.style.zIndex = "2147483647"),
+          document.body.appendChild(t);
+      }),
+      n.Button("Ovo", "0", "0", function () {
+        t = document.createElement("iframe");
+        (t.src =
+          "https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://427396048-642845057394716217.preview.editmysite.com/uploads/b/139890129-761103484729797659/files/ovo.xml"),
+          (t.width = "482"),
+          (t.height = "393"),
+          (t.style.border = "none"),
+          (t.style.zIndex = "2147483647"),
+          document.body.appendChild(t);
+      }),
+      n.Button("Snow Rider 3D", "0", "0", function () {
+        t = document.createElement("iframe");
+        (t.src =
+          "https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/fr6ks8ab/vi9syd1rm@f0981e94dcc7836acb298d369a6e65391b802904/d65uds32/SnowRider3D.xml"),
+          (t.width = "964"),
+          (t.height = "786"),
+          (t.style.border = "none"),
+          (t.style.zIndex = "2147483647"),
+          document.body.appendChild(t);
+      }),
+      n.Button("A Small World Cup", "0", "0", function () {
+        t = document.createElement("iframe");
+        (t.src =
+          "https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://279362704-648691600325733615.preview.editmysite.com/uploads/b/139890129-695123685186939346/files/aswc.xml"),
+          (t.width = "964"),
+          (t.height = "786"),
+          (t.style.border = "none"),
+          (t.style.zIndex = "2147483647"),
+          document.body.appendChild(t);
+      }),
+      n.Button("Retro Bowl", "0", "0", function () {
+        t = document.createElement("iframe");
+        (t.src =
+          "https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://274079163-174037128449362058.preview.editmysite.com/uploads/b/139890129-899796311729593176/files/rtbl.xml"),
+          (t.width = "964"),
+          (t.height = "786"),
+          (t.style.border = "none"),
+          (t.style.zIndex = "2147483647"),
+          document.body.appendChild(t);
+      }),
+      n.Button("Pool: 8 Ball Mania", "0", "0", function () {
+        t = document.createElement("iframe");
+        (t.src = "https://isgames.github.io/8ball/"),
+          (t.width = "964"),
+          (t.height = "786"),
+          (t.style.border = "none"),
+          (t.style.zIndex = "2147483647"),
+          document.body.appendChild(t);
+      }),
+      n.Button("Cookie Clicker", "0", "0", function () {
+        t = document.createElement("iframe");
+        (t.src =
+          "https://advanced-channeler.02.gz-associates.com/?t=tmm-cookieclicker"),
+          (t.width = "964"),
+          (t.height = "786"),
+          (t.style.border = "none"),
+          (t.style.zIndex = "2147483647"),
+          document.body.appendChild(t);
+      }),
+      n.Button("Gravity Drivers", "0", "0", function () {
+        t = document.createElement("iframe");
+        (t.src =
+          "https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/990099003/54@main/7676.xml"),
+          (t.width = "964"),
+          (t.height = "786"),
+          (t.style.border = "none"),
+          (t.style.zIndex = "2147483647"),
+          document.body.appendChild(t);
+      }),
+      n.Button("Tab Spammer", "0", "0", function () {
+        var pr1 = prompt("number of times to open this page");
+        for (let i = 0; i < pr1; i++) {
+          window.open(document.location);
+        }
+      }),
+      n.Button("Iframe Page", "0", "0", function () {
+        (function () {
+          let iframe = document.createElement("iframe");
+          iframe.src = document.location;
+          iframe.style.width = "100%";
+          iframe.style.position = "fixed";
+          iframe.style.zIndex = "2147483647";
+          iframe.style.top = "0px";
+          iframe.style.left = "0px";
+          iframe.style.height = "100%";
+          iframe.style.border = "none";
+          iframe.style.width = "100%";
+          document.body.appendChild(iframe);
+        })();
+      }),
+      n.Button("I-Ready Fail", "0", "0", function () {
+        swal("Warning", "Feature is in progress", "warning", {
+          button: "CLOSE"
+        });
+      }),
+      n.Button("Play Scratch Project", "0", "0", function () {
+        let e = prompt("Project ID?"),
+          t = document.createElement("iframe");
+        (t.src = `https://scratch.mit.edu/projects/${e}/embed`),
+          (t.width = "482"),
+          (t.height = "393"),
+          (t.allowfullscreen = "true"),
+          (t.allowtransparency = "true"),
+          (t.zIndex = "2147483647"),
+          (t.style = "border:none"),
+          document.body.appendChild(t);
+      }),
+      n.Button("(0:03), bestaudio.mp3", "0", "0", function () {
+        const cringeAudio = new Audio(
+          "https://github.com/RumiCreator/buyrumiware/raw/main/bestaudio.mp3"
+        );
+        cringeAudio.loop = true;
+        cringeAudio.play();
+      }),
+      n.Button("(0:18), rumiFaazEEE.mp3", "0", "0", function () {
+        const cringeAudio = new Audio(
+          "https://github.com/RumiCreator/buyrumiware/raw/main/rumifaazEE.mp3"
+        );
+        cringeAudio.loop = true;
+        cringeAudio.play();
+      }),
+      n.Button("(0:18), Android Sound", "0", "0", function () {
+        const cringeAudio = new Audio(
+          "https://github.com/RumiCreator/buyrumiware/raw/main/android_notification_sound_effect_bass_boosted_8332815394720085473.mp3"
+        );
+        cringeAudio.loop = false;
+        cringeAudio.play();
+      }),
+      n.Button("Geometry Dash", "0", "0", function () {
+        let e = document.createElement("iframe");
+        (e.src = "https://scratch.mit.edu/projects/105500895/embed"),
+          (e.width = "964"),
+          (e.height = "786"),
+          (e.allowfullscreen = "true"),
+          (e.allowtransparency = "true"),
+          (e.style = "border:none"),
+          document.body.appendChild(e);
+      });
+    var r = () =>
+        new Promise((e, t) => {
+          try {
+            let o = window.webpackJsonp
+              .map((e) => Object.keys(e[1]).map((t) => e[1][t]))
+              .reduce((e, t) => [...e, ...t], [])
+              .find(
+                (e) =>
+                  /\w{8}-\w{4}-\w{4}-\w{4}-\w{12}/.test(e.toString()) &&
+                  /\(new TextEncoder\)\.encode\(\"(.+?)\"\)/.test(e.toString())
+              )
+              .toString();
+            e({
+              blooketBuild: o.match(/\w{8}-\w{4}-\w{4}-\w{4}-\w{12}/)[0],
+              secret: o.match(/\(new TextEncoder\)\.encode\(\"(.+?)\"\)/)[1]
+            });
+          } catch {
+            t("Rumi-Ware failed to fetch authentication details..!");
+          }
+        }),
+      l = async (e, t) => {
+        let o = window.crypto.getRandomValues(new Uint8Array(12));
+        return window.btoa(
+          Array.from(o)
+            .map((e) => String.fromCharCode(e))
+            .join("") +
+            Array.from(
+              new Uint8Array(
+                await window.crypto.subtle.encrypt(
+                  { name: "AES-GCM", iv: o },
+                  await window.crypto.subtle.importKey(
+                    "raw",
+                    await window.crypto.subtle.digest(
+                      "SHA-256",
+                      new TextEncoder().encode(t)
+                    ),
+                    { name: "AES-GCM" },
+                    !1,
+                    ["encrypt"]
+                  ),
+                  new TextEncoder().encode(JSON.stringify(e))
+                )
+              )
+            )
+              .map((e) => String.fromCharCode(e))
+              .join("")
+        );
+      };
+    function i() {
+      return Object.values(document.querySelector("#app > div > div"))[1]
+        .children[1]._owner;
+    }
+    function d() {
+      return Object.values(Runner());
+    }
+    a.Label("Blooket", "0", "0"),
+      a.Button("Daily Rewards", "0", "0", function () {
+        alert("Rumi-Ware is adding your daily rewards...."),
+          fetch("https://api.blooket.com/api/users", { credentials: "include" })
+            .then((e) => e.json())
+            .then((e) => {
+              r()
+                .then(async (t) => {
+                  fetch("https://api.blooket.com/api/users/add-rewards", {
+                    method: "put",
+                    credentials: "include",
+                    headers: {
+                      "content-type": "application/json",
+                      "X-Blooket-Build": t.blooketBuild
+                    },
+                    body: await l(
+                      { name: e.name, addedTokens: 250, addedXp: 300 },
+                      t.secret
+                    )
+                  }),
+                    fetch("https://api.blooket.com/api/users/add-rewards", {
+                      method: "put",
+                      credentials: "include",
+                      headers: {
+                        "content-type": "application/json",
+                        "X-Blooket-Build": t.blooketBuild
+                      },
+                      body: await l(
+                        { name: e.name, addedTokens: 250, addedXp: 300 },
+                        t.secret
+                      )
+                    })
+                      .then(() =>
+                        alert(
+                          "Rumi-Ware has sucessfully added your daily rewards."
+                        )
+                      )
+                      .catch(() =>
+                        alert(
+                          "An error occured while trying to add your rewards."
+                        )
+                      );
+                })
+                .catch(() =>
+                  alert("Failed to encode requests. This error is very rare.")
+                );
+            })
+            .catch(() => alert("There was an error getting your username."));
+      });
+    let c = !1,
+      p = !1,
+      u = !1;
+    a.Toggle("Auto Answer", "0", "0", function (e) {
+      c = e;
+    }),
+      a.Toggle("Highlight Answers", "0", "0", function (e) {
+        p = e;
+      }),
+      a.Button("GlizzyGUI", "0", "0", function () {
+        let e;
+        (e = document.createElement("iframe")),
+          document.body.append(e),
+          (window.alert = e.contentWindow.alert.bind(window)),
+          (window.prompt = e.contentWindow.prompt.bind(window)),
+          (window.confirm = e.contentWindow.confirm.bind(window)),
+          e.remove(),
+          (() => {
+            let e = document.createElement("style");
+            e.innerHTML = `details > summary {
+    cursor: pointer;
+    transition: 0.15s;
+    list-style: none;
+}
+details > summary:hover {
+    color: hsl(0, 0%, 50%)
+}
+details > summary::-webkit-details-marker {
+    display: none;
+}
+details summary ~ * {
+    animation: sweep .5s ease-in-out;
+}
+
+@keyframes sweep {
+    0%    {opacity: 0; transform: translateY(-10px)}
+    100%  {opacity: 1; transform: translateY(0)}
+}
+.cheat {
+    border: none;
+    background: hsl(0, 0%, 20%);
+    padding: 5px;
+    margin: 3px;
+    width: 60%;
+    color: hsl(0, 0%, 100%);
+    transition: 0.2s;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.cheat:hover {
+    background: hsl(0, 0%, 30%);
+}`;
+            let t = document.createElement("div");
+            t.appendChild(e),
+              (t.style.width = "400px"),
+              (t.style.background = "hsl(0, 0%, 10%)"),
+              (t.style.borderRadius = "10px"),
+              (t.style.position = "absolute"),
+              (t.style.textAlign = "center"),
+              (t.style.fontFamily = "Nunito"),
+              (t.style.color = "white"),
+              (t.style.overflow = "hidden"),
+              (t.style.top = "50px"),
+              (t.style.left = "50px");
+            var o = 0,
+              n = 0,
+              a = 0,
+              s = 0;
+            t.onmousedown = (e = window.event) => {
+              e.preventDefault(),
+                (a = e.clientX),
+                (s = e.clientY),
+                (document.onmouseup = () => {
+                  (document.onmouseup = null), (document.onmousemove = null);
+                }),
+                (document.onmousemove = (e) => {
+                  (e = e || window.event).preventDefault(),
+                    (o = a - e.clientX),
+                    (n = s - e.clientY),
+                    (a = e.clientX),
+                    (s = e.clientY),
+                    (t.style.top = t.offsetTop - n + "px"),
+                    (t.style.left = t.offsetLeft - o + "px");
+                });
+            };
+            let r = document.createElement("div");
+            t.appendChild(r),
+              (r.style.width = "100%"),
+              (r.style.height = "35px"),
+              (r.style.paddingTop = "2px"),
+              (r.style.fontSize = "1.5rem"),
+              (r.style.textAlign = "center"),
+              (r.innerHTML =
+                'Blooket Cheats <span style="font-size: 0.75rem">v4.10.22</span>');
+            let l,
+              i = document.createElement("button");
+            r.appendChild(i),
+              (i.style.background = "red"),
+              (i.style.height = "45px"),
+              (i.style.width = "45px"),
+              (i.style.border = "none"),
+              (i.style.cursor = "pointer"),
+              (i.style.position = "absolute"),
+              (i.style.top = "-10px"),
+              (i.style.right = "-10px"),
+              (i.style.fontSize = "1.5rem"),
+              (i.style.borderRadius = "10px"),
+              (i.style.fontFamily = "Nunito"),
+              (i.style.fontWeight = "bolder"),
+              (i.style.paddingTop = "10px"),
+              (i.style.paddingRight = "15px"),
+              (i.innerText = "X"),
+              (i.onclick = () => {
+                t.remove(),
+                  clearInterval(l),
+                  removeEventListener("keypress", B);
+              });
+            let d = document.createElement("button");
+            r.appendChild(d),
+              (d.style.background = "#444444"),
+              (d.style.height = "45px"),
+              (d.style.width = "45px"),
+              (d.style.border = "none"),
+              (d.style.cursor = "pointer"),
+              (d.style.position = "absolute"),
+              (d.style.top = "-10px"),
+              (d.style.left = "-10px"),
+              (d.style.fontSize = "1.5rem"),
+              (d.style.borderRadius = "10px"),
+              (d.style.fontFamily = "Nunito"),
+              (d.style.fontWeight = "bolder"),
+              (d.style.paddingTop = "10px"),
+              (d.style.paddingLeft = "15px"),
+              (d.innerText = "-"),
+              (d.onclick = () => {
+                c.hidden = !c.hidden;
+              });
+            let c = document.createElement("div"),
+              p = document.createElement("div");
+            c.appendChild(p),
+              t.appendChild(c),
+              (p.innerHTML = `<span id="curPageEl">${
+                N(!0) ? `Current gamemode: ${N(!0)}` : "No game detected"
+              }</span><br><span>(Press E to hide)</span><br>`),
+              (p.style.display = "block"),
+              (p.style.margin = "10px"),
+              (p.style.minHeight = "70px");
+            let u = document.createElement("span");
+            p.appendChild(u), document.body.append(t);
+            let h = document.createElement("div");
+            c.appendChild(h),
+              (h.style.fontSize = "0.9rem"),
+              (h.style.paddingBottom = "5px"),
+              (h.innerHTML =
+                '<span>GUI by OneMinesraft2#5394<br>Cheats by <a style="color: lightblue" href="https://twitter.com/glizuwu">gliz</a></span>');
+            var y = () =>
+                new Promise((e, t) => {
+                  try {
+                    let o = window.webpackJsonp
+                      .map((e) => Object.keys(e[1]).map((t) => e[1][t]))
+                      .reduce((e, t) => [...e, ...t], [])
+                      .find(
+                        (e) =>
+                          /\w{8}-\w{4}-\w{4}-\w{4}-\w{12}/.test(e.toString()) &&
+                          /\(new TextEncoder\)\.encode\(\"(.+?)\"\)/.test(
+                            e.toString()
+                          )
+                      )
+                      .toString();
+                    e({
+                      blooketBuild: o.match(
+                        /\w{8}-\w{4}-\w{4}-\w{4}-\w{12}/
+                      )[0],
+                      secret: o.match(
+                        /\(new TextEncoder\)\.encode\(\"(.+?)\"\)/
+                      )[1]
+                    });
+                  } catch {
+                    t("Could not fetch auth details");
+                  }
+                }),
+              m = async (e, t) => {
+                let o = window.crypto.getRandomValues(new Uint8Array(12));
+                return window.btoa(
+                  Array.from(o)
+                    .map((e) => String.fromCharCode(e))
+                    .join("") +
+                    Array.from(
+                      new Uint8Array(
+                        await window.crypto.subtle.encrypt(
+                          { name: "AES-GCM", iv: o },
+                          await window.crypto.subtle.importKey(
+                            "raw",
+                            await window.crypto.subtle.digest(
+                              "SHA-256",
+                              new TextEncoder().encode(t)
+                            ),
+                            { name: "AES-GCM" },
+                            !1,
+                            ["encrypt"]
+                          ),
+                          new TextEncoder().encode(JSON.stringify(e))
+                        )
+                      )
+                    )
+                      .map((e) => String.fromCharCode(e))
+                      .join("")
+                );
+              };
+            function $() {
+              return Object.values(
+                document.querySelector("#app > div > div")
+              )[1].children[1]._owner;
+            }
+            let f,
+              g,
+              w,
+              b,
+              k,
+              _ = {
+                global: {
+                  "Get Daily Rewards"() {
+                    fetch("https://api.blooket.com/api/users", {
+                      credentials: "include"
+                    })
+                      .then((e) => e.json())
+                      .then((e) => {
+                        y()
+                          .then(async (t) => {
+                            fetch(
+                              "https://api.blooket.com/api/users/add-rewards",
+                              {
+                                method: "put",
+                                credentials: "include",
+                                headers: {
+                                  "content-type": "application/json",
+                                  "X-Blooket-Build": t.blooketBuild
+                                },
+                                body: await m(
+                                  {
+                                    name: e.name,
+                                    addedTokens: 250,
+                                    addedXp: 300
+                                  },
+                                  t.secret
+                                )
+                              }
+                            ),
+                              fetch(
+                                "https://api.blooket.com/api/users/add-rewards",
+                                {
+                                  method: "put",
+                                  credentials: "include",
+                                  headers: {
+                                    "content-type": "application/json",
+                                    "X-Blooket-Build": t.blooketBuild
+                                  },
+                                  body: await m(
+                                    {
+                                      name: e.name,
+                                      addedTokens: 250,
+                                      addedXp: 300
+                                    },
+                                    t.secret
+                                  )
+                                }
+                              )
+                                .then(() => alert("Added daily rewawrds!"))
+                                .catch(() =>
+                                  alert(
+                                    "There was an error when adding rewards!"
+                                  )
+                                );
+                          })
+                          .catch(() =>
+                            alert("There was an error encoding requests!")
+                          );
+                      })
+                      .catch(() =>
+                        alert("There was an error getting username!")
+                      );
+                  },
+                  "Spoof Blooks"() {
+                    if (!window.location.pathname.split("/").includes("lobby"))
+                      return alert(
+                        "You must be in a game lobby! (e.g. https://www.blooket.com/play/lobby)"
+                      );
+                    $().stateNode.setState({
+                      lockedBlooks: [],
+                      takenBlooks: []
+                    });
+                  },
+                  "Toggle Auto Answer"() {
+                    f = !f;
+                  },
+                  "Toggle Highlight Answers"() {
+                    g = !g;
+                  },
+                  "Spam Open Boxes"() {
+                    let e = prompt(
+                        "Which box do you want to open? (e.g. Space)"
+                      ),
+                      t = {
+                        safari: 25,
+                        aquatic: 20,
+                        bot: 20,
+                        space: 20,
+                        breakfast: 15,
+                        medieval: 15,
+                        wonderland: 15
+                      };
+                    if (!Object.keys(t).includes(e.toLowerCase()))
+                      return alert("I could not find that box!");
+                    let o = prompt("How many boxes do you want to open?");
+                    fetch("https://api.blooket.com/api/users", {
+                      credentials: "include"
+                    })
+                      .then((e) => e.json())
+                      .then((n) => {
+                        if (
+                          (n.tokens < t[e.toLowerCase()] * o &&
+                            (o = Math.floor(n.tokens / t[e.toLowerCase()])),
+                          !o)
+                        )
+                          return alert("You do not have enough tokens!");
+                        let a = (e) => new Promise((t) => setTimeout(t, e));
+                        y()
+                          .then(async (t) => {
+                            let s = !1,
+                              r = [];
+                            for (
+                              let l = 0;
+                              l < o &&
+                              (fetch(
+                                "https://api.blooket.com/api/users/unlockblook",
+                                {
+                                  method: "put",
+                                  credentials: "include",
+                                  headers: {
+                                    "content-type": "application/json",
+                                    "X-Blooket-Build": t.blooketBuild
+                                  },
+                                  body: await m(
+                                    {
+                                      name: n.name,
+                                      box:
+                                        e.charAt(0).toUpperCase() +
+                                        e.slice(1).toLowerCase()
+                                    },
+                                    t.secret
+                                  )
+                                }
+                              )
+                                .then(async (e) => {
+                                  let t = await e.json();
+                                  r.push(t.unlockedBlook),
+                                    alert(`${t.unlockedBlook} (${l + 1}/${o})`);
+                                })
+                                .catch(() => {
+                                  s = !0;
+                                }),
+                              await a(750),
+                              !s);
+                              l++
+                            );
+                            let i = {};
+                            r.forEach((e) => {
+                              i[e] = (i[e] || 0) + 1;
+                            }),
+                              alert(
+                                `Results:
+` +
+                                  Object.entries(i).map(
+                                    (e) => `    ${e[1]} ${e[0]}`
+                                  ).join(`
+`)
+                              );
+                          })
+                          .catch(() =>
+                            alert("There was an error encoding requests!")
+                          );
+                      })
+                      .catch(() =>
+                        alert("There was an error getting username!")
+                      );
+                  },
+                  "Auto Sell Dupes"() {
+                    fetch("https://api.blooket.com/api/users", {
+                      credentials: "include"
+                    })
+                      .then((e) => e.json())
+                      .then((e) => {
+                        let t = Object.entries(e.unlocks)
+                            .map((e) => [e[0], e[1] - 1])
+                            .filter((e) => e[1] > 0),
+                          o = (e) => new Promise((t) => setTimeout(t, e));
+                        y()
+                          .then(async (n) => {
+                            let a = !1;
+                            for (let [s, r] of (alert(
+                              "Selling duplicate blooks, please wait"
+                            ),
+                            t))
+                              if (
+                                (fetch(
+                                  "https://api.blooket.com/api/users/sellblook",
+                                  {
+                                    method: "put",
+                                    credentials: "include",
+                                    headers: {
+                                      "content-type": "application/json",
+                                      "X-Blooket-Build": n.blooketBuild
+                                    },
+                                    body: await m(
+                                      { name: e.name, blook: s, numSold: r },
+                                      n.secret
+                                    )
+                                  }
+                                ).catch(() => {
+                                  a = !0;
+                                }),
+                                await o(750),
+                                a)
+                              )
+                                break;
+                            alert(
+                              `Results:
+` +
+                                t.map((e) => `    ${e[1]} ${e[0]}`).join(`
+`)
+                            );
+                          })
+                          .catch(() =>
+                            alert("There was an error encoding requests!")
+                          );
+                      })
+                      .catch(() =>
+                        alert("There was an error getting user data!")
+                      );
+                  }
+                },
+                cafe: {
+                  "Infinite Food"() {
+                    if ("/cafe" != document.location.pathname)
+                      return alert("This cheat doesn't work in the shop!");
+                    $().stateNode.state.foods.forEach((e) => (e.stock = 99999)),
+                      $().stateNode.forceUpdate();
+                  },
+                  "Max Levels"() {
+                    if ("/cafe/shop" != document.location.pathname)
+                      return alert("This cheat only works in the shop!");
+                    Object.keys($().stateNode.state.items).forEach(
+                      (e) => ($().stateNode.state.items[e] = 5)
+                    ),
+                      $().stateNode.forceUpdate();
+                  },
+                  "Set Cash"() {
+                    $().stateNode.setState({
+                      cafeCash: Number(
+                        parseFloat(prompt("How much cash would you like?"))
+                      )
+                    });
+                  },
+                  "Reset Abilities"() {
+                    Object.keys($().stateNode.state.abilities).forEach(
+                      (e) => ($().stateNode.state.abilities[e] = 5)
+                    ),
+                      $().stateNode.forceUpdate();
+                  }
+                },
+                kingdom: {
+                  "Choice ESP"() {
+                    w = !w;
+                  },
+                  "Max Stats"() {
+                    $().stateNode.setState({
+                      materials: 100,
+                      people: 100,
+                      happiness: 100,
+                      gold: 100
+                    });
+                  },
+                  "Disable Toucan"() {
+                    $().stateNode.taxCounter = Number.MAX_VALUE;
+                  },
+                  "Set Guests"() {
+                    let e = Number(
+                      parseFloat(prompt("How many guests do you want?"))
+                    );
+                    $().stateNode.setState({ guestScore: e });
+                  },
+                  "Skip Guest"() {
+                    $().stateNode.nextGuest();
+                  }
+                },
+                crypto: {
+                  "Auto Hack"() {
+                    b = !b;
+                  },
+                  "Set Crypto"() {
+                    let e = Number(
+                      parseFloat(prompt("How much crypto do you want?"))
+                    );
+                    $().stateNode.setState({ crypto2: e, crypto: e });
+                  },
+                  "Custom Password"() {
+                    let e = Number(
+                      parseFloat(
+                        prompt("What do you want to set your password to?")
+                      )
+                    );
+                    $().stateNode.setState({ password: e });
+                  },
+                  "Remove Hack"() {
+                    $().stateNode.setState({ hack: "" });
+                  },
+                  "Reset Player's Crypto"() {
+                    let e = prompt("Name of player"),
+                      t = $();
+                    e &&
+                      t.memoizedProps.firebase.getDatabaseVal(
+                        t.memoizedProps.client.hostId,
+                        "c",
+                        (...o) => {
+                          let n = Object.keys(o[0]);
+                          n.some((t) => t == e)
+                            ? n.forEach((n) => {
+                                n == e &&
+                                  (t.memoizedProps.firebase.setVal({
+                                    id: t.memoizedProps.client.hostId,
+                                    path: "c/" + t.memoizedProps.client.name,
+                                    val: {
+                                      p: t.stateNode.state.password,
+                                      b: t.memoizedProps.client.blook,
+                                      cr: t.stateNode.state.crypto,
+                                      tat: n + ":" + (o[0][n].cr || 0)
+                                    }
+                                  }),
+                                  alert("Reset player's crypto"));
+                              })
+                            : alert("Player does not exist");
+                        }
+                      );
+                  }
+                },
+                factory: {
+                  "All Mega Bot"() {
+                    let e = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0].fill({
+                      name: "Mega Bot",
+                      color: "#d71f27",
+                      class: "\uD83E\uDD16",
+                      rarity: "Legendary",
+                      cash: [8e4, 43e4, 42e5, 62e6, 1e9],
+                      time: [5, 5, 3, 3, 3],
+                      price: [7e6, 12e7, 19e8, 35e9],
+                      active: !1,
+                      level: 4,
+                      bonus: 5.5
+                    });
+                    $().stateNode.setState({ blooks: e });
+                  },
+                  "Remove Glitches"() {
+                    $().stateNode.setState({
+                      glitch: "",
+                      bites: 0,
+                      ads: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                      hazards: ["", "", "", "", ""],
+                      lol: !1,
+                      joke: !1,
+                      slow: !1,
+                      dance: !1,
+                      popUpAmount: 0
+                    });
+                  },
+                  "Max Blooks"() {
+                    $().stateNode.state.blooks.forEach((e) => {
+                      e.level = 4;
+                    });
+                  },
+                  "Set Cash"() {
+                    let e = Number(
+                      parseFloat(prompt("How much cash do you want?"))
+                    );
+                    $().stateNode.setState({ cash: e });
+                  }
+                },
+                fishing: {
+                  "Set Weight"() {
+                    let e = Number(
+                      parseFloat(prompt("How much weight do you want?"))
+                    );
+                    $().stateNode.setState({ weight2: e, weight: e });
+                  },
+                  "Set Lure"() {
+                    let e =
+                      Number(
+                        parseFloat(
+                          prompt(
+                            "What do you want to set your lure to? (1 - 5)"
+                          )
+                        )
+                      ) - 1;
+                    $().stateNode.setState({ lure: e < 0 ? 0 : e > 4 ? 4 : e });
+                  }
+                },
+                gold: {
+                  "Set Gold"() {
+                    let e = Number(
+                      parseFloat(prompt("How much gold do you want?"))
+                    );
+                    $().stateNode.setState({ gold2: e, gold: e });
+                  },
+                  "Chest ESP"() {
+                    k = !k;
+                  },
+                  "Set Player's Gold"() {
+                    let e = $(),
+                      t = prompt("Player to set gold"),
+                      o = Number(parseFloat(prompt("Amount to set gold to")));
+                    e.memoizedProps.firebase.setVal({
+                      id: e.memoizedProps.client.hostId,
+                      path: "c/" + e.memoizedProps.client.name,
+                      val: {
+                        b: e.memoizedProps.client.blook,
+                        g: e.stateNode.state.gold,
+                        tat: t + ":swap:" + o
+                      }
+                    });
+                  }
+                },
+                racing: {
+                  "Instant Win"() {
+                    $().stateNode.setState({
+                      progress: $().stateNode.state.goalAmount
+                    }),
+                      setTimeout(() => {
+                        try {
+                          Array.from(
+                            document.body.querySelectorAll(
+                              'div[class*="answerText"]'
+                            )
+                          )
+                            .filter(
+                              (e) =>
+                                e.firstChild.innerHTML ==
+                                $().memoizedState.question.correctAnswers[0]
+                            )[0]
+                            .click();
+                        } catch {
+                          try {
+                            Array.from(
+                              document.body.querySelectorAll(
+                                'div[class*="answerText"]'
+                              )
+                            )
+                              .filter(
+                                (e) =>
+                                  e.firstChild.innerHTML ==
+                                  $().memoizedProps.client.question
+                                    .correctAnswers[0]
+                              )[0]
+                              .click();
+                          } catch {}
+                        }
+                      }, 100);
+                  }
+                },
+                defense: {
+                  "Clear Enemies"() {
+                    $().stateNode.enemies = [];
+                  },
+                  "Max Towers"() {
+                    $().stateNode.towers.forEach((e) => {
+                      (e.damage = 99999999),
+                        (e.range = 99999999),
+                        (e.fullCd = 0);
+                    });
+                  },
+                  "Remove Ducks"() {
+                    (data = $().stateNode).ducks.forEach((e) => {
+                      data.tiles[e.y][e.x] = 0;
+                    }),
+                      (data.ducks.length = 0);
+                  },
+                  "Place Towers Anywhere"() {
+                    $().stateNode.tiles = $().stateNode.tiles.map((e) =>
+                      e.map((e) => (2 == e ? 0 : e))
+                    );
+                  },
+                  "Set Damage"() {
+                    let e = Number(
+                      parseFloat(prompt("How much damage do you want?"))
+                    );
+                    $().stateNode.dmg = e;
+                  },
+                  "Set Round"() {
+                    let e = Number(
+                      parseFloat(prompt("What round do you want to set it to?"))
+                    );
+                    $().stateNode.setState({ round: e });
+                  },
+                  "Set Tokens"() {
+                    let e = Number(
+                      parseFloat(prompt("How many tokens do you want?"))
+                    );
+                    $().stateNode.setState({ tokens: e });
+                  }
+                },
+                doom: {
+                  "Set Coins"() {
+                    try {
+                      $().stateNode.props.setTowerCoins(
+                        Number(
+                          parseFloat(prompt("How many coins do you want?"))
+                        )
+                      );
+                    } catch {}
+                  },
+                  "Lower Enemy Stats"() {
+                    let e = $().stateNode.state;
+                    if ("select" != e.phase)
+                      return alert(
+                        "You must be on the attribute selection page!"
+                      );
+                    $().stateNode.setState({
+                      enemyCard: {
+                        ...e.enemyCard,
+                        strength: 0,
+                        charisma: 0,
+                        wisdom: 0
+                      }
+                    });
+                  },
+                  "Max Player Stats"() {
+                    let e = $().stateNode.state;
+                    if ("select" != e.phase)
+                      return alert(
+                        "You must be on the attribute selection page!"
+                      );
+                    $().stateNode.setState({
+                      myCard: {
+                        ...e.myCard,
+                        strength: 20,
+                        charisma: 20,
+                        wisdom: 20
+                      }
+                    });
+                  },
+                  "Heal Player"() {
+                    $().stateNode.setState({ myLife: 100 });
+                  }
+                },
+                rush: {
+                  "Set Defense"() {
+                    let e = $();
+                    e.stateNode.props.firebase.setVal({
+                      id: e.stateNode.props.client.hostId,
+                      path: "c/" + e.stateNode.props.client.name + "/d",
+                      val: Number(
+                        parseFloat(prompt("How much defense do you want?"))
+                      )
+                    });
+                  },
+                  "Set Blooks"() {
+                    let e = $();
+                    e.stateNode.props.firebase.setVal({
+                      id: e.stateNode.props.client.hostId,
+                      path: "c/" + e.stateNode.props.client.name + "/bs",
+                      val: Number(
+                        parseFloat(prompt("How many blooks do you want?"))
+                      )
+                    });
+                  }
+                }
+              },
+              x = document.createElement("details");
+            x.innerHTML =
+              '<summary style="padding: 10px; font-size: 1.5em; font-weight: bolder">Global</summary>';
+            for (var S = 0; S < Object.keys(_.global).length; S++) {
+              let v = E(Object.keys(_.global)[S]);
+              (v.onclick = _.global[Object.keys(_.global)[S]]),
+                x.appendChild(v);
+            }
+            (x.open = !0), (x.style.paddingBottom = "10px"), p.appendChild(x);
+            let C = document.createElement("div");
+            p.appendChild(C),
+              (l = setInterval(() => {
+                T != N() &&
+                  ((T = N()),
+                  (curPageEl.innerText = N(!0)
+                    ? `Current gamemode: ${N(!0)}`
+                    : "No game detected"),
+                  Array.from(C.children).forEach((e) => e.remove()),
+                  T &&
+                    _[T] &&
+                    Object.keys(_[T]).forEach((e) => {
+                      let t = E(e);
+                      (t.onclick = _[T][e]),
+                        C.appendChild(t),
+                        C.appendChild(document.createElement("br"));
+                    }));
+                let e = `Auto Answer: ${f ? "Enabled" : "Disabled"}
+Highlight Answers: ${g ? "Enabled" : "Disabled"}${
+                  "kingdom" == T
+                    ? `
+Choice ESP: ${w ? "Enabled" : "Disabled"}`
+                    : "crypto" == T
+                    ? `
+Auto Hack: ${b ? "Enabled" : "Disabled"}`
+                    : "gold" == T
+                    ? `
+Chest ESP: ${k ? "Enabled" : "Disabled"}`
+                    : ""
+                }`;
+                if ((u.innerText != e && (u.innerText = e), f))
+                  try {
+                    Array.from(
+                      document.body.querySelectorAll('div[class*="answerText"]')
+                    )
+                      .filter(
+                        (e) =>
+                          e.firstChild.innerHTML ==
+                          $().memoizedState.question.correctAnswers[0]
+                      )[0]
+                      .click();
+                  } catch {
+                    try {
+                      Array.from(
+                        document.body.querySelectorAll(
+                          'div[class*="answerText"]'
+                        )
+                      )
+                        .filter(
+                          (e) =>
+                            e.firstChild.innerHTML ==
+                            $().memoizedProps.client.question.correctAnswers[0]
+                        )[0]
+                        .click();
+                    } catch {}
+                  }
+                if (g)
+                  try {
+                    Array.from(
+                      document.querySelector('div[class*="answersHolder"')
+                        .children
+                    ).forEach((e) => {
+                      $().memoizedState.question.correctAnswers.includes(
+                        e.innerText
+                      ) ||
+                      $().memoizedProps.client.question.correctAnswers.includes(
+                        e.innerText
+                      )
+                        ? (e.firstChild.style =
+                            "background-color: rgb(0, 207, 119);")
+                        : (e.firstChild.style =
+                            "background-color: rgb(225, 40, 33);");
+                    });
+                  } catch {}
+                if (
+                  "kingdom" == T &&
+                  (Array.from(
+                    document.getElementsByClassName("choiceESP")
+                  ).forEach((e) => e.remove()),
+                  w)
+                )
+                  try {
+                    let t = {
+                        materials: Array.from(
+                          document.querySelectorAll("div")
+                        ).find((e) =>
+                          Array.from(e.children).find((e) =>
+                            e.className.includes("tree")
+                          )
+                        ),
+                        people: Array.from(
+                          document.querySelectorAll("div")
+                        ).find((e) =>
+                          Array.from(e.children).find(
+                            (e) =>
+                              e.className.includes("users") &&
+                              e.parentElement.className.includes(
+                                "statContainer"
+                              )
+                          )
+                        ),
+                        happiness: Array.from(
+                          document.querySelectorAll("div")
+                        ).find((e) =>
+                          Array.from(e.children).find((e) =>
+                            e.className.includes("grin")
+                          )
+                        ),
+                        gold: Array.from(
+                          document.querySelectorAll("div")
+                        ).find((e) =>
+                          Array.from(e.children).find((e) =>
+                            e.className.includes("coins")
+                          )
+                        )
+                      },
+                      o = $().stateNode.state.guest;
+                    Object.entries(o.yes).forEach((e) => {
+                      if ("msg" == e[0]) return;
+                      let o = document.createElement("div");
+                      (o.className = "choiceESP"),
+                        (o.style =
+                          "font-size: 24px; color: rgb(75, 194, 46); font-weight: bolder;"),
+                        (o.innerText = String(e[1])),
+                        t[e[0]].appendChild(o);
+                    }),
+                      Object.entries(o.no).forEach((e) => {
+                        if ("msg" == e[0]) return;
+                        let o = document.createElement("div");
+                        (o.className = "choiceESP"),
+                          (o.style =
+                            "font-size: 24px; color: darkred; font-weight: bolder;"),
+                          (o.innerText = String(e[1])),
+                          t[e[0]].appendChild(o);
+                      });
+                  } catch (n) {}
+                if ("crypto" == T && b) {
+                  let { stage: a, correctPassword: s } = Object.values(
+                    document.querySelector("#app > div > div")
+                  )[1].children[1]._owner.stateNode.state;
+                  "hack" == a &&
+                    Array.from(document.querySelectorAll("div"))
+                      .filter((e) => e.innerHTML == s)[0]
+                      .click();
+                }
+                if ("gold" == T && k)
+                  try {
+                    if ("prize" == $().stateNode.state.stage) {
+                      let { choices: r } = $().stateNode.state,
+                        l = document.querySelector("div[class*='regularBody']")
+                          .children[1];
+                      l &&
+                        (document.querySelectorAll(".chest-esp").length
+                          ? r.forEach((e, t) => {
+                              3 == l.children.length &&
+                                l.children[t].children[1].innerText != e.text &&
+                                (l.children[t].children[1].innerText = e.text);
+                            })
+                          : r.forEach((e, t) => {
+                              ((textElement = document.createElement(
+                                "p"
+                              )).className = "chest-esp"),
+                                (textElement.innerText = e.text),
+                                (textElement.style = `text-align: center;
+                    font-size: 30px;
+                    color: white;
+                    font-family:Titan One;
+                    sans-serif;
+                    border-color: black;
+                    margin-top: 200px;`);
+                              try {
+                                l.children[t].appendChild(textElement);
+                              } catch (o) {
+                                console.log(o);
+                              }
+                            }));
+                    }
+                  } catch (i) {
+                    console.log(i);
+                  }
+              }));
+            let T = N();
+            function E(e) {
+              let t = document.createElement("button");
+              return t.classList.add("cheat"), (t.innerText = e), t;
+            }
+            function N(e) {
+              switch (window.location.pathname.split("/")[2]) {
+                case "rush":
+                  return e ? "Blook Rush" : "rush";
+                case "gold":
+                  return e ? "Gold Quest" : "gold";
+                case "fishing":
+                  return e ? "Fishing Frenzy" : "fishing";
+                case "hack":
+                  return e ? "Crypto Hack" : "crypto";
+                case "battle-royale":
+                  return e ? "Battle Royale" : "royale";
+                case "factory":
+                  return e ? "Factory" : "factory";
+                case "racing":
+                  return e ? "Racing" : "racing";
+                case "classic":
+                  return e ? "Classic" : "classic";
+                default:
+                  switch (window.location.pathname.split("/")[1]) {
+                    case "defense":
+                      return e ? "Tower Defense" : "defense";
+                    case "cafe":
+                      return e ? "Caf\xe9" : "cafe";
+                    case "tower":
+                      return e ? "Tower of Doom" : "doom";
+                    case "kingdom":
+                      return e ? "Crazy Kingdom" : "kingdom";
+                    default:
+                      return !1;
+                  }
+              }
+            }
+            function B(e) {
+              "KeyE" == e.code && (t.hidden = !t.hidden);
+            }
+            T &&
+              _[T] &&
+              Object.keys(_[T]).forEach((e) => {
+                let t = E(e);
+                (t.onclick = _[T][e]),
+                  C.appendChild(t),
+                  C.appendChild(document.createElement("br"));
+              }),
+              addEventListener("keypress", B);
+          })();
+      }),
+      a.Button("Set Cash (Factory)", "0", "0", function () {
+        let e = Number(parseFloat(prompt("How much cash do you want?")));
+        i().stateNode.setState({ cash: e });
+      }),
+      a.Button("Mega Bot (Factory", "0", "0", function () {
+        let e = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0].fill({
+          name: "Mega Bot",
+          color: "#d71f27",
+          class: "\uD83E\uDD16",
+          rarity: "Legendary",
+          cash: [8e4, 43e4, 42e5, 62e6, 1e9],
+          time: [5, 5, 3, 3, 3],
+          price: [7e6, 12e7, 19e8, 35e9],
+          active: !1,
+          level: 4,
+          bonus: 5.5
+        });
+        i().stateNode.setState({ blooks: e });
+      }),
+      a.Button("SetCrypto (Crypto)", "0", "0", function () {
+        let e = Number(parseFloat(prompt("How much crypto do you want?")));
+        i().stateNode.setState({ crypto2: e, crypto: e });
+      }),
+      a.Toggle("AutoPassword (Crypto)", "0", "0", function (e) {
+        u = e;
+      }),
+      a.Button("Set Weight (Fishing)", "0", "0", function () {
+        let e = Number(parseFloat(prompt("How much weight do you want?")));
+        i().stateNode.setState({ weight2: e, weight: e });
+      }),
+      a.Button("Set Lure (Fishing)", "0", "0", function () {
+        let e =
+          Number(
+            parseFloat(prompt("What do you want to set your lure to? (1 - 5)"))
+          ) - 1;
+        i().stateNode.setState({ lure: e < 0 ? 0 : e > 4 ? 4 : e });
+      }),
+      a.Button("Set Tokens (TD)", "0", "0", function () {
+        let e = Number(parseFloat(prompt("How many tokens do you want?")));
+        i().stateNode.setState({ tokens: e });
+      }),
+      a.Button("Clear Enemies (TD)", "0", "0", function () {
+        i().stateNode.enemies = [];
+      }),
+      s.Label("Dinosaur Game", "0", "0"),
+      s.Button("Set Gravity", "0", "0", function () {
+        let e = Number(
+          parseFloat(prompt("How much gravity do you want? (Normal 0.6)"))
+        );
+        d()[12].GRAVITY = e;
+      }),
+      s.Button("Kahmron's True Power", "0", "0", function () {
+        (d()[3].SPEED = 6e3), (d()[3].GRAVITY = 0);
+      }),
+      s.Button("Set Game Speed", "0", "0", function () {
+        let e = Number(
+          parseFloat(
+            prompt(
+              "Kahmron has granted you the wish of time. (Normal Game Speed 1)"
+            )
+          )
+        );
+        d()[3].SPEED = e;
+      }),
+      s.Button("Set Dino Speed", "0", "0", function () {
+        let e = Number(parseFloat(prompt("Enter dinosaur speed.")));
+        Runner.instance_.setSpeed(e);
+      }),
+      s.Button("Set Dino Jump", "0", "0", function () {
+        parseFloat(prompt("Enter dinosaur jump height.")),
+          Runner.instance_.tRex.setJumpVelocity(15);
+      });
+    try {
+      var h = DinoHandler().prototype.gameOver;
+    } catch {}
+    s.Toggle("Invincibiity", "0", "0", function (e) {
+      !0 == e
+        ? (Runner.prototype.gameOver = h)
+        : (Runner.prototype.gameOver = function () {});
+    }),
+      setInterval(() => {
+        if (!0 == c && c)
+          try {
+            Array.from(
+              document.body.querySelectorAll('div[class*="answerText"]')
+            )
+              .filter(
+                (e) =>
+                  e.firstChild.innerHTML ==
+                  i().memoizedState.question.correctAnswers[0]
+              )[0]
+              .click();
+          } catch {
+            try {
+              Array.from(
+                document.body.querySelectorAll('div[class*="answerText"]')
+              )
+                .filter(
+                  (e) =>
+                    e.firstChild.innerHTML ==
+                    i().memoizedProps.client.question.correctAnswers[0]
+                )[0]
+                .click();
+            } catch {}
+          }
+        if (p)
+          try {
+            Array.from(
+              document.querySelector('div[class*="answersHolder"').children
+            ).forEach((e) => {
+              i().memoizedState.question.correctAnswers.includes(e.innerText) ||
+              i().memoizedProps.client.question.correctAnswers.includes(
+                e.innerText
+              )
+                ? (e.firstChild.style = "background-color: rgb(0, 207, 119);")
+                : (e.firstChild.style = "background-color: rgb(225, 40, 33);");
+            });
+          } catch {}
+      }, 10);
+  }),
+  (readWhitelist = function () {
+    let x = document.createElement("div");
+    x.style.zIndex = 2147483647;
+    x.style = `
+        position: "fixed",
+        top: "10px",
+        left: "10px",
+        height: "150px",
+        width: "150px",
+        background-color: "grey",
+        transition: "background-color 1s"
+      `;
+
+    document.body.appendChild(x);
+
+    let i = document.createElement("input");
+    i.type = "password";
+    i.style.zIndex = 2147483647;
+    i.style.position = "absolute";
+    i.style.top = "20px";
+    i.style.left = "20px";
+
+    x.appendChild(i);
+
+    let b = document.createElement("button");
+    b.innerHTML = "enter";
+    b.style.zIndex = 2147483647;
+    b.style.position = "absolute";
+    b.style.top = "50px";
+    b.style.left = "20px";
+    b.onclick = function () {
+      ["poopoop1234!", "6411hacker", "rumiForever"].forEach((t) => {
+        t === i.value && init();
+        t === i.value && x.remove();
+      });
+    };
+
+    x.appendChild(b);
+  })();
